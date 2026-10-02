@@ -37,7 +37,7 @@ class VerificationTests(unittest.TestCase):
             fixture = root / "fixture"
             fixture.mkdir()
             (fixture / "Cargo.toml").write_text(
-                "[package]\npublish=false\n", encoding="utf-8"
+                '[package]\npublish=["crates-io"]\n', encoding="utf-8"
             )
             (fixture / ".cargo_vcs_info.json").write_text(
                 json.dumps({"git": {"sha1": "a" * 40}}), encoding="utf-8"

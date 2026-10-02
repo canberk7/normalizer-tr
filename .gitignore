@@ -13,3 +13,5 @@
 *.whl
 *.crate
 *.pyd
+/dist/
+/release-manifest.json

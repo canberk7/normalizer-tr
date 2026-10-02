@@ -63,13 +63,10 @@ def prepare(output):
     vcs = json.loads((package / ".cargo_vcs_info.json").read_text(encoding="utf-8"))
     if vcs["git"]["sha1"] != command("git", "rev-parse", "HEAD"):
         raise RuntimeError("core archive VCS does not match clean source revision")
-    if (
-        tomllib.loads((package / "Cargo.toml").read_text(encoding="utf-8"))["package"][
-            "publish"
-        ]
-        is not False
-    ):
-        raise RuntimeError("packaged publication guard is missing")
+    if tomllib.loads((package / "Cargo.toml").read_text(encoding="utf-8"))["package"][
+        "publish"
+    ] != ["crates-io"]:
+        raise RuntimeError("core publication must be restricted to crates.io")
     consumer = output / "rust-consumer"
     (consumer / "src").mkdir(parents=True)
     (consumer / "Cargo.toml").write_text(
@@ -90,10 +87,13 @@ def prepare(output):
 
 
 def wheel(output):
-    candidates = list((output / "packages").glob("normalizer_tr_python-*.whl"))
+    candidates = list((output / "packages").glob("normalizer_tr-*.whl"))
     if len(candidates) != 1:
         raise RuntimeError("expected one authoritative wheel")
-    path = candidates[0]
+    return inspect_wheel(candidates[0])
+
+
+def inspect_wheel(path):
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
         if any(

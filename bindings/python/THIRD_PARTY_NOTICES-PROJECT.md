@@ -17,6 +17,11 @@ is build tooling under MIT OR Apache-2.0. The wheel retains owned license and
 third-party notices; upstream licenses for compiled Rust dependencies are
 included separately under its license assets.
 
+Release wheels also retain the Rust 1.99.0 standard-library MIT/Apache license
+texts and the toolchain's `COPYRIGHT-library.html` notices under
+`licenses/rust-std-1.99.0/`. Those upstream terms are separate from our owned
+Apache-2.0 source. These binary redistribution assets are not core dependencies.
+
 | Package | Locked version | Declared license |
 |---|---|---|
 | regex | 1.13.1 | MIT OR Apache-2.0 |

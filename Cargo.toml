@@ -8,8 +8,11 @@ license = "Apache-2.0"
 repository = "https://github.com/erdemtuna/normalizer-tr"
 keywords = ["turkish", "tts", "normalization", "text-to-speech"]
 categories = ["text-processing"]
-publish = false
+publish = ["crates-io"]
 include = ["/src/**", "/tests/**", "/examples/**", "/benches/**", "/docs/**", "/Cargo.toml", "/Cargo.lock", "/rust-toolchain.toml", "/README.md", "/CONTRIBUTING.md", "/PERFORMANCE.md", "/LICENSE", "/THIRD_PARTY_NOTICES.md"]
+
+[package.metadata.docs.rs]
+all-features = true
 
 [[bench]]
 name = "latency"

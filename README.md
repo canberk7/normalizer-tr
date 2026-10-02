@@ -15,34 +15,34 @@ The same Rust engine powers both APIs. It is synchronous, works offline and
 requires no model, network service, Torch or async runtime. Exact decimal and
 money arithmetic uses integers, not floating point.
 
-**Status:** early-development 0.3.0. Source is available on GitHub; packages are
-**not yet published to crates.io or PyPI**. Both Cargo packages retain
-`publish = false`. The instructions below install from source. Public API,
-native-language and voice-quality review remain release gates.
+**Status:** early-development 0.3.0, not a stable 1.0 API or a universal
+pronunciation guarantee. The Rust crate and Python distribution share the name
+`normalizer-tr`; both use `normalizer_tr` in code. The internal Rust/Python
+companion is not a separate crates.io product.
 
 ## Choose your API
 
 | Use case | Component | Dependencies |
 |---|---|---|
 | Rust applications | `normalizer-tr` / import `normalizer_tr` | Rust only; optional Serde |
-| Python applications | `normalizer-tr-python` / import `normalizer_tr` | The compiled Rust binding; no speech model |
+| Python applications | `normalizer-tr` / import `normalizer_tr` | The compiled Rust binding; no speech model |
 
 `bindings/python` is a separate Cargo workspace member and wheel, not part of
 the core `.crate`. The binding depends on the Rust core, never the reverse.
 
 ## Rust quickstart
 
-Use Rust 1.94.0 / edition 2024. From your application's `Cargo.toml`:
+Use Rust 1.94 or newer / edition 2024. Development builds use Rust 1.99.0.
+From your application's `Cargo.toml`:
 
 ```toml
 [dependencies]
-normalizer-tr = { git = "https://github.com/erdemtuna/normalizer-tr", branch = "main" }
+normalizer-tr = "0.3"
 ```
 
-Commit your application's `Cargo.lock` to pin the resolved revision, or replace
-`branch` with a reviewed `rev` for an explicit source pin. To work entirely from
-a local checkout on Windows, use `normalizer-tr = { path = '..\normalizer-tr' }`
-instead.
+Commit your application's `Cargo.lock` to pin resolved dependencies. For an
+unpublished checkout, use a reviewed Git revision or a local path such as
+`normalizer-tr = { path = '..\normalizer-tr' }`.
 
 ```rust
 use normalizer_tr::{Normalizer, NormalizeOptions};
@@ -67,10 +67,16 @@ optional `serde` feature to serialize results, segments and issues.
 
 ## Python quickstart
 
-The Python bridge is already implemented; it calls Rust directly rather than
-duplicating the language rules. The currently verified platform is **Windows
-x64, CPython 3.13, Rust 1.94.0 MSVC**. Other OS/ABI combinations are not yet
-verified, and no prebuilt public wheels are supplied.
+The Python bridge calls Rust directly rather than duplicating language rules.
+The release targets ordinary CPython 3.11–3.14 on Windows/Linux x64 and macOS
+x64/arm64. Linux wheels require glibc 2.28 or newer; macOS wheels target 12.0 or
+newer. No PyPy, free-threaded Python or other architectures are claimed.
+
+```text
+python -m pip install normalizer-tr
+```
+
+Compatible wheels require no Rust compiler. To build from source instead:
 
 Install [Rust](https://www.rust-lang.org/tools/install) and the MSVC C++ build
 tools, then run in PowerShell. On Windows, use a short checkout path (for
@@ -84,9 +90,8 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -X utf8 .\bindings\python\examples\showcase.py
 ```
 
-The source installation builds a native wheel; a Rust compiler is required to
-build it, but not to use an already-built compatible wheel. For a local wheel,
-use `python -m pip install --no-deps <wheel-path>`.
+The source installation builds a native wheel and requires Rust/C++ build tools.
+For a local wheel, use `python -m pip install --no-deps <wheel-path>`.
 
 ```python
 from normalizer_tr import Normalizer
@@ -191,6 +196,11 @@ The measured warm release Rust p95 was below 1 ms separately for representative
 short and medium cohorts on the inspected Windows host. This is **not** an
 all-input, cold-start, Python, concurrent-call or end-to-end audio guarantee.
 See [PERFORMANCE.md](PERFORMANCE.md) for the measurement protocol and limits.
+
+## Acknowledgements
+
+Thanks to [@canberk7](https://github.com/canberk7) for practical TTS feedback
+and suggestions on making the Python package easier to distribute.
 
 ## License and boundaries
 

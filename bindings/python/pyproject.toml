@@ -3,13 +3,27 @@ requires = ["maturin==1.15.0"]
 build-backend = "maturin"
 
 [project]
-name = "normalizer-tr-python"
+name = "normalizer-tr"
 version = "0.3.0"
 description = "Typed Python binding for the bounded Rust Turkish text normalizer"
-requires-python = ">=3.13,<3.14"
+requires-python = ">=3.11,<3.15"
 license = "Apache-2.0"
-license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/**/*"]
-readme = "README.md"
+license-files = ["LICENSE-PROJECT", "THIRD_PARTY_NOTICES-PROJECT.md", "licenses/**/*"]
+readme = "../../README.md"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Rust",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Topic :: Text Processing",
+    "Typing :: Typed",
+]
 
 [project.urls]
 Repository = "https://github.com/erdemtuna/normalizer-tr"
@@ -19,3 +33,4 @@ Issues = "https://github.com/erdemtuna/normalizer-tr/issues"
 python-source = "python"
 module-name = "normalizer_tr._native"
 include = ["python/normalizer_tr/py.typed", "python/normalizer_tr/*.pyi"]
+exclude = ["assets/**"]

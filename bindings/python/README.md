@@ -1,13 +1,22 @@
 # Python binding
 
-Distribution `normalizer-tr-python` 0.3.0; import `normalizer_tr`, native submodule
+Distribution `normalizer-tr` 0.3.0; import `normalizer_tr`, native submodule
 `normalizer_tr._native`. This is the Python bridge to the same Rust engine, not a
-second implementation. Source is public; the distribution is **not on PyPI**.
-Currently verified: Windows x64, CPython 3.13, Rust 1.94 MSVC. No ABI3 or other
-platform claim. Import/use needs no Torch, hub, model folder, credentials,
+second implementation. Release target: ordinary CPython 3.11–3.14 on
+Windows/Linux x64 and macOS x64/arm64. Linux requires glibc 2.28+ and macOS
+targets 12.0+. Rust 1.99 builds the extension.
+No ABI3, PyPy or free-threaded Python claim. Import/use needs no Torch, hub, model folder, credentials,
 network or Python normalization subprocess.
 
-## Install from source
+## Install
+
+```text
+python -m pip install normalizer-tr
+```
+
+Compatible binary wheels need no Rust compiler.
+
+## Build from source
 
 Install Rust and the MSVC C++ build tools before building. From a repository
 checkout, in PowerShell:
@@ -20,8 +29,6 @@ py -3.13 -m venv .venv
 
 This builds a wheel locally. To install an existing compatible wheel, use
 `python -m pip install --no-deps <wheel-path>`. Only source builds require Rust.
-`pip install normalizer-tr-python` by package name is not an available install
-path until a separately approved PyPI release.
 
 ## API
 

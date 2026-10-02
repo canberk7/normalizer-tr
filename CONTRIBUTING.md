@@ -6,8 +6,10 @@ Do not include credentials, real account identifiers or private customer text.
 
 ## Set up
 
-Currently verified: Windows x64, Rust 1.94.0 MSVC, CPython 3.13. The toolchain
-file pins Rust and includes rustfmt/Clippy. Install the MSVC C++ build tools.
+The release toolchain is Rust 1.99.0; the declared minimum is 1.94 and is tested
+separately. The toolchain file includes rustfmt/Clippy. Python release tests
+cover ordinary CPython 3.11–3.14 on the selected Windows/Linux/macOS platforms.
+On Windows, install the MSVC C++ build tools.
 
 ```powershell
 git clone https://github.com/erdemtuna/normalizer-tr.git
@@ -80,5 +82,6 @@ See [PERFORMANCE.md](PERFORMANCE.md) for host-specific timing limits.
 
 Owned contributions are Apache-2.0; retain third-party notices. Keep credentials,
 external model source/weights, audio, wheels, environments and reports out of
-Git. Source availability is not registry publication: `publish = false` remains,
-and there are no automated release workflows.
+Git. Only the core can publish to crates.io; the internal Rust/Python companion
+keeps `publish = false`. Registry publishing is a separate owner-controlled
+release action after built-artifact verification, never an untrusted PR action.

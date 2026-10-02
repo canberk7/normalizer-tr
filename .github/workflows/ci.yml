@@ -33,7 +33,7 @@ jobs:
       - name: Set up pinned Rust
         uses: dtolnay/rust-toolchain@89b12181fb390509a0842a86cc55eeb8eb928c1d # stable
         with:
-          toolchain: "1.94.0"
+          toolchain: "1.99.0"
           components: rustfmt, clippy
       - name: Select build interpreter
         run: '"PYO3_PYTHON=$((Get-Command python).Source)" >> $env:GITHUB_ENV'
@@ -58,7 +58,7 @@ jobs:
       - name: Check Python types
         run: python -m mypy bindings\python\python --check-untyped-defs
       - name: Test verification helpers
-        run: python .\scripts\test_verification.py
+        run: python .\scripts\test_verification.py && python .\scripts\test_release_artifacts.py
       - name: Build native wheel
         run: python -m maturin build --release --locked --manifest-path .\bindings\python\Cargo.toml --interpreter python --out .\target\ci-wheels
       - name: Install built wheel
@@ -70,3 +70,16 @@ jobs:
         run: python -m pytest .\bindings\python\tests -q
       - name: Check standalone core packaging
         run: cargo package -p normalizer-tr --locked
+
+  msrv:
+    name: Declared minimum Rust 1.94
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@89b12181fb390509a0842a86cc55eeb8eb928c1d
+        with:
+          toolchain: "1.94.0"
+      - run: cargo +1.94.0 test --locked --all-features

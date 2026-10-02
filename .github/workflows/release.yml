@@ -1,0 +1,192 @@
+name: Release artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish verified artifacts to PyPI (release tag only)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  wheels:
+    name: ${{ matrix.platform }} / CPython ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13", "3.14"]
+        platform: [windows, linux, macos-x64, macos-arm64]
+        include:
+          - platform: windows
+            os: windows-latest
+            target: x86_64-pc-windows-msvc
+            architecture: x64
+            manylinux: auto
+          - platform: linux
+            os: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+            architecture: x64
+            manylinux: "2_28"
+          - platform: macos-x64
+            os: macos-15-intel
+            target: x86_64-apple-darwin
+            architecture: x64
+            manylinux: auto
+          - platform: macos-arm64
+            os: macos-15
+            target: aarch64-apple-darwin
+            architecture: arm64
+            manylinux: auto
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUTF8: "1"
+      MACOSX_DEPLOYMENT_TARGET: "12.0"
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: ${{ matrix.architecture }}
+      - uses: dtolnay/rust-toolchain@89b12181fb390509a0842a86cc55eeb8eb928c1d
+        with:
+          toolchain: "1.99.0"
+      - name: Test native core on host
+        run: cargo test --locked --all-features
+      - name: Build interpreter-specific wheel
+        uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b
+        with:
+          maturin-version: "1.15.0"
+          rust-toolchain: "1.99.0"
+          target: ${{ matrix.target }}
+          manylinux: ${{ matrix.manylinux }}
+          args: --release --locked --manifest-path bindings/python/Cargo.toml --interpreter ${{ matrix.platform == 'linux' && format('python{0}', matrix.python) || 'python' }} --out dist
+      - name: Install exact wheel and test public API
+        run: |
+          python -m pip install pytest==9.0.3 twine==7.0.0
+          python scripts/release_artifacts.py inspect dist --python "${{ matrix.python }}" --platform "${{ matrix.platform }}"
+          python -m twine check --strict dist/*
+          python -m pip install --no-deps dist/*.whl
+          python -m pytest bindings/python/tests -q
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: wheel-${{ matrix.platform }}-${{ matrix.python }}
+          path: dist/*.whl
+          if-no-files-found: error
+
+  source:
+    name: Source distribution and core archive
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: "3.13"
+      - uses: dtolnay/rust-toolchain@89b12181fb390509a0842a86cc55eeb8eb928c1d
+        with:
+          toolchain: "1.99.0"
+      - name: Build and consume sdist
+        run: |
+          python -m pip install maturin==1.15.0 pytest==9.0.3 twine==7.0.0
+          cargo metadata --locked --no-deps --format-version 1 > /dev/null
+          python -m maturin sdist --manifest-path bindings/python/Cargo.toml --out dist
+          python scripts/release_artifacts.py inspect dist --sdist
+          python -m twine check --strict dist/*
+          python -m pip install --no-deps dist/*.tar.gz
+          python -m pytest bindings/python/tests -q
+      - name: Package and dry-run core publication
+        run: |
+          cargo package -p normalizer-tr --locked
+          cargo publish -p normalizer-tr --locked --dry-run
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: source-distribution
+          path: dist/*.tar.gz
+          if-no-files-found: error
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: core-archive
+          path: target/package/normalizer-tr-*.crate
+          if-no-files-found: error
+
+  inspect:
+    name: Complete artifact set and provenance
+    needs: [wheels, source]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: "3.13"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: wheel-*
+          path: dist
+          merge-multiple: true
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: source-distribution
+          path: dist
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: core-archive
+          path: target/release-core
+      - name: Check complete matrix and emit release manifest
+        run: |
+          python scripts/test_release_artifacts.py
+          python scripts/release_artifacts.py manifest dist --core target/release-core --output release-manifest.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: verified-release
+          path: |
+            dist/*
+            release-manifest.json
+            target/release-core/*
+          if-no-files-found: error
+
+  publish:
+    name: Owner-controlled PyPI publication
+    if: inputs.publish && startsWith(github.ref, 'refs/tags/v') && github.repository == 'erdemtuna/normalizer-tr'
+    needs: [inspect]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: "3.13"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-release
+          path: verified
+      - name: Verify release tag and exact artifact checksums
+        run: python scripts/release_artifacts.py verify verified --tag "${{ github.ref_name }}"
+      - name: Publish with short-lived PyPI identity
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33
+        with:
+          packages-dir: verified/dist
+          print-hash: true
