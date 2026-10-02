@@ -1,0 +1,12 @@
+* text=auto
+*.rs text eol=lf
+*.txt text eol=lf
+*.tsv text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+Cargo.lock text eol=lf
+*.py text eol=lf
+*.pyi text eol=lf
+*.json text eol=lf
+*.lock text eol=lf
+bindings/python/licenses/** -text

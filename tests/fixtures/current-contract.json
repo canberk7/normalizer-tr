@@ -1,0 +1,3739 @@
+{
+  "description": "Current semantic refactor oracle at9978fc5, excludes intentional identity and diagnostic rule-name API changes; not a selectable past implementation",
+  "outcomes": {
+    "ascii:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ordinary words remain unchanged in the original case.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 53,
+              "start": 0
+            },
+            "text": "ordinary words remain unchanged in the original case."
+          }
+        ]
+      }
+    },
+    "ascii:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ordinary words remain unchanged in the original case.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 53,
+              "start": 0
+            },
+            "text": "ordinary words remain unchanged in the original case."
+          }
+        ]
+      }
+    },
+    "cardinal:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yüz yirmi üç milyon dört yüz elli altı bin yedi yüz seksen dokuz",
+        "segments": [
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "yüz yirmi üç milyon dört yüz elli altı bin yedi yüz seksen dokuz"
+          }
+        ]
+      }
+    },
+    "cardinal:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yüz yirmi üç milyon dört yüz elli altı bin yedi yüz seksen dokuz",
+        "segments": [
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "yüz yirmi üç milyon dört yüz elli altı bin yedi yüz seksen dokuz"
+          }
+        ]
+      }
+    },
+    "clock-hint:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on iki otuz",
+        "segments": [
+          {
+            "kind": "Time",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "on iki otuz"
+          }
+        ]
+      }
+    },
+    "clock-hint:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on iki otuz",
+        "segments": [
+          {
+            "kind": "Time",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "on iki otuz"
+          }
+        ]
+      }
+    },
+    "decomposed:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "İstanbul 👩‍👩‍👧‍👦: ön dördün ve yirmi beş Türk lirası",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 42,
+              "start": 0
+            },
+            "text": "İstanbul 👩‍👩‍👧‍👦: ön "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 50,
+              "start": 42
+            },
+            "text": "dördün"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 54,
+              "start": 50
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 59,
+              "start": 54
+            },
+            "text": "yirmi beş Türk lirası"
+          }
+        ]
+      }
+    },
+    "decomposed:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "İstanbul 👩‍👩‍👧‍👦: ön dördün ve yirmi beş Türk lirası",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 42,
+              "start": 0
+            },
+            "text": "İstanbul 👩‍👩‍👧‍👦: ön "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 50,
+              "start": 42
+            },
+            "text": "dördün"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 54,
+              "start": 50
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 59,
+              "start": 54
+            },
+            "text": "yirmi beş Türk lirası"
+          }
+        ]
+      }
+    },
+    "email:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "info et ornek nokta kom",
+        "segments": [
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 14,
+              "start": 0
+            },
+            "text": "info et ornek nokta kom"
+          }
+        ]
+      }
+    },
+    "email:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "info et ornek nokta kom",
+        "segments": [
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 14,
+              "start": 0
+            },
+            "text": "info et ornek nokta kom"
+          }
+        ]
+      }
+    },
+    "financial:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on dört Mart iki bin yirmi altıda saat dokuz otuzda imzalanan sözleşmede yüzde otuz yedi virgül beşlik sapma ve katma değer vergisi dahil bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş fark vardı.",
+        "segments": [
+          {
+            "kind": "Date",
+            "range": {
+              "end": 13,
+              "start": 0
+            },
+            "text": "on dört Mart iki bin yirmi altıda"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 19,
+              "start": 13
+            },
+            "text": " saat "
+          },
+          {
+            "kind": "Time",
+            "range": {
+              "end": 27,
+              "start": 19
+            },
+            "text": "dokuz otuzda"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 51,
+              "start": 27
+            },
+            "text": " imzalanan sözleşmede "
+          },
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 60,
+              "start": 51
+            },
+            "text": "yüzde otuz yedi virgül beşlik"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 70,
+              "start": 60
+            },
+            "text": " sapma ve "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 73,
+              "start": 70
+            },
+            "text": "katma değer vergisi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 80,
+              "start": 73
+            },
+            "text": " dahil "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 95,
+              "start": 80
+            },
+            "text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 108,
+              "start": 95
+            },
+            "text": " fark vardı."
+          }
+        ]
+      }
+    },
+    "financial:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on dört Mart iki bin yirmi altıda saat dokuz otuzda imzalanan sözleşmede yüzde otuz yedi virgül beşlik sapma ve katma değer vergisi dahil bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş fark vardı.",
+        "segments": [
+          {
+            "kind": "Date",
+            "range": {
+              "end": 13,
+              "start": 0
+            },
+            "text": "on dört Mart iki bin yirmi altıda"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 19,
+              "start": 13
+            },
+            "text": " saat "
+          },
+          {
+            "kind": "Time",
+            "range": {
+              "end": 27,
+              "start": 19
+            },
+            "text": "dokuz otuzda"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 51,
+              "start": 27
+            },
+            "text": " imzalanan sözleşmede "
+          },
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 60,
+              "start": 51
+            },
+            "text": "yüzde otuz yedi virgül beşlik"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 70,
+              "start": 60
+            },
+            "text": " sapma ve "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 73,
+              "start": 70
+            },
+            "text": "katma değer vergisi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 80,
+              "start": 73
+            },
+            "text": " dahil "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 95,
+              "start": 80
+            },
+            "text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 108,
+              "start": 95
+            },
+            "text": " fark vardı."
+          }
+        ]
+      }
+    },
+    "foreign:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on dört avro beş sent ve kırk dolar ve yirmi beş sterlin",
+        "segments": [
+          {
+            "kind": "Money",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "on dört avro beş sent"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 12,
+              "start": 8
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 15,
+              "start": 12
+            },
+            "text": "kırk dolar"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 19,
+              "start": 15
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 25,
+              "start": 19
+            },
+            "text": "yirmi beş sterlin"
+          }
+        ]
+      }
+    },
+    "foreign:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on dört avro beş sent ve kırk dolar ve yirmi beş sterlin",
+        "segments": [
+          {
+            "kind": "Money",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "on dört avro beş sent"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 12,
+              "start": 8
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 15,
+              "start": 12
+            },
+            "text": "kırk dolar"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 19,
+              "start": 15
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 25,
+              "start": 19
+            },
+            "text": "yirmi beş sterlin"
+          }
+        ]
+      }
+    },
+    "fraction:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "eksi on iki virgül sıfır sıfır beş",
+        "segments": [
+          {
+            "kind": "Decimal",
+            "range": {
+              "end": 7,
+              "start": 0
+            },
+            "text": "eksi on iki virgül sıfır sıfır beş"
+          }
+        ]
+      }
+    },
+    "fraction:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "eksi on iki virgül sıfır sıfır beş",
+        "segments": [
+          {
+            "kind": "Decimal",
+            "range": {
+              "end": 7,
+              "start": 0
+            },
+            "text": "eksi on iki virgül sıfır sıfır beş"
+          }
+        ]
+      }
+    },
+    "group-hint:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "bin iki yüz otuz dört",
+        "segments": [
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "bin iki yüz otuz dört"
+          }
+        ]
+      }
+    },
+    "group-hint:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "bin iki yüz otuz dört",
+        "segments": [
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "bin iki yüz otuz dört"
+          }
+        ]
+      }
+    },
+    "hint:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ö sıfır sıfır sıfır dört iki",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "ö "
+          },
+          {
+            "kind": "Digits",
+            "range": {
+              "end": 8,
+              "start": 3
+            },
+            "text": "sıfır sıfır sıfır dört iki"
+          }
+        ]
+      }
+    },
+    "hint:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ö sıfır sıfır sıfır dört iki",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "ö "
+          },
+          {
+            "kind": "Digits",
+            "range": {
+              "end": 8,
+              "start": 3
+            },
+            "text": "sıfır sıfır sıfır dört iki"
+          }
+        ]
+      }
+    },
+    "iban:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı",
+        "segments": [
+          {
+            "kind": "Iban",
+            "range": {
+              "end": 32,
+              "start": 0
+            },
+            "text": "te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı"
+          }
+        ]
+      }
+    },
+    "iban:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı",
+        "segments": [
+          {
+            "kind": "Iban",
+            "range": {
+              "end": 32,
+              "start": 0
+            },
+            "text": "te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı"
+          }
+        ]
+      }
+    },
+    "intent-invalid:preserve": {
+      "error": "InvalidHint"
+    },
+    "intent-invalid:reject": {
+      "error": "InvalidHint"
+    },
+    "intent-ordinal:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yirmi beşinci",
+        "segments": [
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "yirmi beşinci"
+          }
+        ]
+      }
+    },
+    "intent-ordinal:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yirmi beşinci",
+        "segments": [
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "yirmi beşinci"
+          }
+        ]
+      }
+    },
+    "intent-phone:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi",
+        "segments": [
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 10,
+              "start": 0
+            },
+            "text": "beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi"
+          }
+        ]
+      }
+    },
+    "intent-phone:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi",
+        "segments": [
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 10,
+              "start": 0
+            },
+            "text": "beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi"
+          }
+        ]
+      }
+    },
+    "intent-range:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on ila on beş",
+        "segments": [
+          {
+            "kind": "Range",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "on ila on beş"
+          }
+        ]
+      }
+    },
+    "intent-range:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on ila on beş",
+        "segments": [
+          {
+            "kind": "Range",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "on ila on beş"
+          }
+        ]
+      }
+    },
+    "intent-roman:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "üç bin dokuz yüz doksan dokuz",
+        "segments": [
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "üç bin dokuz yüz doksan dokuz"
+          }
+        ]
+      }
+    },
+    "intent-roman:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "üç bin dokuz yüz doksan dokuz",
+        "segments": [
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "üç bin dokuz yüz doksan dokuz"
+          }
+        ]
+      }
+    },
+    "intent-web:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ornek nokta kom",
+        "segments": [
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "ornek nokta kom"
+          }
+        ]
+      }
+    },
+    "intent-web:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ornek nokta kom",
+        "segments": [
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "ornek nokta kom"
+          }
+        ]
+      }
+    },
+    "international:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi",
+        "segments": [
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 19,
+              "start": 0
+            },
+            "text": "artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi"
+          }
+        ]
+      }
+    },
+    "international:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi",
+        "segments": [
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 19,
+              "start": 0
+            },
+            "text": "artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi"
+          }
+        ]
+      }
+    },
+    "invalid:preserve": {
+      "result": {
+        "complete": false,
+        "issues": [
+          {
+            "category": "Unsupported",
+            "explanation": "expression is outside the bounded profile",
+            "range": {
+              "end": 9,
+              "start": 0
+            }
+          },
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 19,
+              "start": 11
+            }
+          },
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 37,
+              "start": 27
+            }
+          }
+        ],
+        "locale": "tr-TR",
+        "normalized_text": "3 + 4 = 7; 1,005 TL; tarih 29.02.1900",
+        "segments": [
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "3 + 4 = 7"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 11,
+              "start": 9
+            },
+            "text": "; "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 19,
+              "start": 11
+            },
+            "text": "1,005 TL"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 27,
+              "start": 19
+            },
+            "text": "; tarih "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 37,
+              "start": 27
+            },
+            "text": "29.02.1900"
+          }
+        ]
+      }
+    },
+    "invalid:reject": {
+      "error": "unresolved",
+      "issues": [
+        {
+          "category": "Unsupported",
+          "explanation": "expression is outside the bounded profile",
+          "range": {
+            "end": 9,
+            "start": 0
+          }
+        },
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 19,
+            "start": 11
+          }
+        },
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 37,
+            "start": 27
+          }
+        }
+      ]
+    },
+    "medium-date:preserve": {
+      "result": {
+        "complete": false,
+        "issues": [
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 169,
+              "start": 159
+            }
+          }
+        ],
+        "locale": "tr-TR",
+        "normalized_text": "tarih on dört Mart iki bin yirmi altı ve saat dokuz otuz bugün kullanılan açık zaman örnekleridir. Geçerli takvim ve saat değerleri doğru okunurken aynı paragraf içinde tarih 31.04.2026 geçersiz kalır. Bu karma metinde kısmi sonuç ile kesin hata davranışı ayrı ayrı sınanır. Eski ve yeni kimliklerin ikisi de bilinen zaman kurallarını ve kaynak aralıklarını korumalıdır.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 6,
+              "start": 0
+            },
+            "text": "tarih "
+          },
+          {
+            "kind": "Date",
+            "range": {
+              "end": 16,
+              "start": 6
+            },
+            "text": "on dört Mart iki bin yirmi altı"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 25,
+              "start": 16
+            },
+            "text": " ve saat "
+          },
+          {
+            "kind": "Time",
+            "range": {
+              "end": 30,
+              "start": 25
+            },
+            "text": "dokuz otuz"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 159,
+              "start": 30
+            },
+            "text": " bugün kullanılan açık zaman örnekleridir. Geçerli takvim ve saat değerleri doğru okunurken aynı paragraf içinde tarih "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 169,
+              "start": 159
+            },
+            "text": "31.04.2026"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 372,
+              "start": 169
+            },
+            "text": " geçersiz kalır. Bu karma metinde kısmi sonuç ile kesin hata davranışı ayrı ayrı sınanır. Eski ve yeni kimliklerin ikisi de bilinen zaman kurallarını ve kaynak aralıklarını korumalıdır."
+          }
+        ]
+      }
+    },
+    "medium-date:reject": {
+      "error": "unresolved",
+      "issues": [
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 169,
+            "start": 159
+          }
+        }
+      ]
+    },
+    "medium-digits:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "sıfır sıfır sıfır dört iki örneğinin baştaki sıfırları yalnızca açık basamak ipucu sayesinde seslendirilir. Bu uzun paragrafın amacı ipucu ve metin haritalamasının orta boy girdilerde de gerçekten zamanlanmasını sağlamaktır. Sonuç yalnızca doğru metni değil, bütün kaynak aralıklarını ve tamlık bilgisini de taşır. Hiçbir kaynak karakteri sessizce silinmemelidir.",
+        "segments": [
+          {
+            "kind": "Digits",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "sıfır sıfır sıfır dört iki"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 373,
+              "start": 5
+            },
+            "text": " örneğinin baştaki sıfırları yalnızca açık basamak ipucu sayesinde seslendirilir. Bu uzun paragrafın amacı ipucu ve metin haritalamasının orta boy girdilerde de gerçekten zamanlanmasını sağlamaktır. Sonuç yalnızca doğru metni değil, bütün kaynak aralıklarını ve tamlık bilgisini de taşır. Hiçbir kaynak karakteri sessizce silinmemelidir."
+          }
+        ]
+      }
+    },
+    "medium-digits:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "sıfır sıfır sıfır dört iki örneğinin baştaki sıfırları yalnızca açık basamak ipucu sayesinde seslendirilir. Bu uzun paragrafın amacı ipucu ve metin haritalamasının orta boy girdilerde de gerçekten zamanlanmasını sağlamaktır. Sonuç yalnızca doğru metni değil, bütün kaynak aralıklarını ve tamlık bilgisini de taşır. Hiçbir kaynak karakteri sessizce silinmemelidir.",
+        "segments": [
+          {
+            "kind": "Digits",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "sıfır sıfır sıfır dört iki"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 373,
+              "start": 5
+            },
+            "text": " örneğinin baştaki sıfırları yalnızca açık basamak ipucu sayesinde seslendirilir. Bu uzun paragrafın amacı ipucu ve metin haritalamasının orta boy girdilerde de gerçekten zamanlanmasını sağlamaktır. Sonuç yalnızca doğru metni değil, bütün kaynak aralıklarını ve tamlık bilgisini de taşır. Hiçbir kaynak karakteri sessizce silinmemelidir."
+          }
+        ]
+      }
+    },
+    "medium-intent:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yirmi beşinci satırdaki sıra açık bir ipucu ile okunur. Bu paragraf çağıranın özgün bayt koordinatlarını koruyan tam ifade niyetini sınar. Sıradan sözcüklerin büyük küçük harfleri değişmez ve hiçbir çıktı önceden önbelleğe alınmaz. Sonuç metni ile bölüm metinleri birlikte sahiplenilir. Bütün doğrulama ve ipucu sınırları zamanlanan çağrının içindedir.",
+        "segments": [
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "yirmi beşinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 387,
+              "start": 3
+            },
+            "text": " satırdaki sıra açık bir ipucu ile okunur. Bu paragraf çağıranın özgün bayt koordinatlarını koruyan tam ifade niyetini sınar. Sıradan sözcüklerin büyük küçük harfleri değişmez ve hiçbir çıktı önceden önbelleğe alınmaz. Sonuç metni ile bölüm metinleri birlikte sahiplenilir. Bütün doğrulama ve ipucu sınırları zamanlanan çağrının içindedir."
+          }
+        ]
+      }
+    },
+    "medium-intent:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yirmi beşinci satırdaki sıra açık bir ipucu ile okunur. Bu paragraf çağıranın özgün bayt koordinatlarını koruyan tam ifade niyetini sınar. Sıradan sözcüklerin büyük küçük harfleri değişmez ve hiçbir çıktı önceden önbelleğe alınmaz. Sonuç metni ile bölüm metinleri birlikte sahiplenilir. Bütün doğrulama ve ipucu sınırları zamanlanan çağrının içindedir.",
+        "segments": [
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "yirmi beşinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 387,
+              "start": 3
+            },
+            "text": " satırdaki sıra açık bir ipucu ile okunur. Bu paragraf çağıranın özgün bayt koordinatlarını koruyan tam ifade niyetini sınar. Sıradan sözcüklerin büyük küçük harfleri değişmez ve hiçbir çıktı önceden önbelleğe alınmaz. Sonuç metni ile bölüm metinleri birlikte sahiplenilir. Bütün doğrulama ve ipucu sınırları zamanlanan çağrının içindedir."
+          }
+        ]
+      }
+    },
+    "medium-invalid:preserve": {
+      "result": {
+        "complete": false,
+        "issues": [
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 77,
+              "start": 67
+            }
+          },
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 91,
+              "start": 86
+            }
+          },
+          {
+            "category": "Unsupported",
+            "explanation": "expression is outside the bounded profile",
+            "range": {
+              "end": 121,
+              "start": 112
+            }
+          },
+          {
+            "category": "ProtectedIdentifier",
+            "explanation": "structured identifier is preserved in full",
+            "range": {
+              "end": 168,
+              "start": 163
+            }
+          },
+          {
+            "category": "ProtectedIdentifier",
+            "explanation": "structured identifier is preserved in full",
+            "range": {
+              "end": 207,
+              "start": 193
+            }
+          },
+          {
+            "category": "Unsupported",
+            "explanation": "expression is outside the bounded profile",
+            "range": {
+              "end": 260,
+              "start": 239
+            }
+          },
+          {
+            "category": "Unsupported",
+            "explanation": "expression is outside the bounded profile",
+            "range": {
+              "end": 294,
+              "start": 288
+            }
+          }
+        ],
+        "locale": "tr-TR",
+        "normalized_text": "Bu paragraf yanlış bileşiklerin tam korunmasını sınar. tarih 31.04.2026 ve saat 24:00 geçerli değildir. 3 + 4 = 7 genel matematik kapsamı dışındadır. AB-12 bir ürün kimliğidir. TR12 0006 1005 tam hesap numarası değildir. https://ornek.com/%ZZ yanlış kaçış içerir. 25 JPY desteklenmeyen para birimidir. Motor bu metni uydurulmuş akıcı parçalara ayırmamalıdır.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 67,
+              "start": 0
+            },
+            "text": "Bu paragraf yanlış bileşiklerin tam korunmasını sınar. tarih "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 77,
+              "start": 67
+            },
+            "text": "31.04.2026"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 86,
+              "start": 77
+            },
+            "text": " ve saat "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 91,
+              "start": 86
+            },
+            "text": "24:00"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 112,
+              "start": 91
+            },
+            "text": " geçerli değildir. "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 121,
+              "start": 112
+            },
+            "text": "3 + 4 = 7"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 163,
+              "start": 121
+            },
+            "text": " genel matematik kapsamı dışındadır. "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 168,
+              "start": 163
+            },
+            "text": "AB-12"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 193,
+              "start": 168
+            },
+            "text": " bir ürün kimliğidir. "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 207,
+              "start": 193
+            },
+            "text": "TR12 0006 1005"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 239,
+              "start": 207
+            },
+            "text": " tam hesap numarası değildir. "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 260,
+              "start": 239
+            },
+            "text": "https://ornek.com/%ZZ"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 288,
+              "start": 260
+            },
+            "text": " yanlış kaçış içerir. "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 294,
+              "start": 288
+            },
+            "text": "25 JPY"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 389,
+              "start": 294
+            },
+            "text": " desteklenmeyen para birimidir. Motor bu metni uydurulmuş akıcı parçalara ayırmamalıdır."
+          }
+        ]
+      }
+    },
+    "medium-invalid:reject": {
+      "error": "unresolved",
+      "issues": [
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 77,
+            "start": 67
+          }
+        },
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 91,
+            "start": 86
+          }
+        },
+        {
+          "category": "Unsupported",
+          "explanation": "expression is outside the bounded profile",
+          "range": {
+            "end": 121,
+            "start": 112
+          }
+        },
+        {
+          "category": "ProtectedIdentifier",
+          "explanation": "structured identifier is preserved in full",
+          "range": {
+            "end": 168,
+            "start": 163
+          }
+        },
+        {
+          "category": "ProtectedIdentifier",
+          "explanation": "structured identifier is preserved in full",
+          "range": {
+            "end": 207,
+            "start": 193
+          }
+        },
+        {
+          "category": "Unsupported",
+          "explanation": "expression is outside the bounded profile",
+          "range": {
+            "end": 260,
+            "start": 239
+          }
+        },
+        {
+          "category": "Unsupported",
+          "explanation": "expression is outside the bounded profile",
+          "range": {
+            "end": 294,
+            "start": 288
+          }
+        }
+      ]
+    },
+    "medium-money:preserve": {
+      "result": {
+        "complete": false,
+        "issues": [
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 244,
+              "start": 236
+            }
+          }
+        ],
+        "locale": "tr-TR",
+        "normalized_text": "Örnek toplam bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş olarak verilmiştir. Başka bir satırda on dört avro beş sent ve kırk dolar yazıyor. Üçüncü miktar yirmi beş sterlin değerindedir. Para birimi dönüştürülmez ve küçük birimler yuvarlanmaz. Eksi sıfırın işareti korunur. 1,005 TL gibi yanlış kesinlik içeren miktarlar tam kaynak aralığında çözülmemiş kalır. Bu veriler yalnızca açık yerel test örnekleridir.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 14,
+              "start": 0
+            },
+            "text": "Örnek toplam "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 29,
+              "start": 14
+            },
+            "text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 71,
+              "start": 29
+            },
+            "text": " olarak verilmiştir. Başka bir satırda "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 79,
+              "start": 71
+            },
+            "text": "on dört avro beş sent"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 83,
+              "start": 79
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 86,
+              "start": 83
+            },
+            "text": "kırk dolar"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 115,
+              "start": 86
+            },
+            "text": " yazıyor. Üçüncü miktar "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 121,
+              "start": 115
+            },
+            "text": "yirmi beş sterlin"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 236,
+              "start": 121
+            },
+            "text": " değerindedir. Para birimi dönüştürülmez ve küçük birimler yuvarlanmaz. Eksi sıfırın işareti korunur. "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 244,
+              "start": 236
+            },
+            "text": "1,005 TL"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 387,
+              "start": 244
+            },
+            "text": " gibi yanlış kesinlik içeren miktarlar tam kaynak aralığında çözülmemiş kalır. Bu veriler yalnızca açık yerel test örnekleridir."
+          }
+        ]
+      }
+    },
+    "medium-money:reject": {
+      "error": "unresolved",
+      "issues": [
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 244,
+            "start": 236
+          }
+        }
+      ]
+    },
+    "medium-numbers:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Atölyede bugün küçük bir raf hazırlıyoruz. Önce üçüncü çizimi masaya koyup parçaların sırasını kontrol ediyoruz. Her destek için otuz santimetre uzunluğunda tahta seçiyoruz. Karışım kabına iki yüz elli mililitre su ekledikten sonra beş kilogram toprağı yavaşça döküyoruz. Ölçümde görülen yüzde on iki virgül beşlik farkı not ediyoruz. Kutudaki yirmi dört vidayı sayıp dörtten başlayarak uygun deliklere yerleştiriyoruz.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 56,
+              "start": 0
+            },
+            "text": "Atölyede bugün küçük bir raf hazırlıyoruz. Önce "
+          },
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 64,
+              "start": 56
+            },
+            "text": "üçüncü"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 146,
+              "start": 64
+            },
+            "text": " çizimi masaya koyup parçaların sırasını kontrol ediyoruz. Her destek için "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 151,
+              "start": 146
+            },
+            "text": "otuz santimetre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 202,
+              "start": 151
+            },
+            "text": " uzunluğunda tahta seçiyoruz. Karışım kabına "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 208,
+              "start": 202
+            },
+            "text": "iki yüz elli mililitre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 229,
+              "start": 208
+            },
+            "text": " su ekledikten sonra "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 233,
+              "start": 229
+            },
+            "text": "beş kilogram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 288,
+              "start": 233
+            },
+            "text": " toprağı yavaşça döküyoruz. Ölçümde görülen "
+          },
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 297,
+              "start": 288
+            },
+            "text": "yüzde on iki virgül beşlik"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 328,
+              "start": 297
+            },
+            "text": " farkı not ediyoruz. Kutudaki "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 330,
+              "start": 328
+            },
+            "text": "yirmi dört"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 346,
+              "start": 330
+            },
+            "text": " vidayı sayıp "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 351,
+              "start": 346
+            },
+            "text": "dörtten"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 397,
+              "start": 351
+            },
+            "text": " başlayarak uygun deliklere yerleştiriyoruz."
+          }
+        ]
+      }
+    },
+    "medium-numbers:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Atölyede bugün küçük bir raf hazırlıyoruz. Önce üçüncü çizimi masaya koyup parçaların sırasını kontrol ediyoruz. Her destek için otuz santimetre uzunluğunda tahta seçiyoruz. Karışım kabına iki yüz elli mililitre su ekledikten sonra beş kilogram toprağı yavaşça döküyoruz. Ölçümde görülen yüzde on iki virgül beşlik farkı not ediyoruz. Kutudaki yirmi dört vidayı sayıp dörtten başlayarak uygun deliklere yerleştiriyoruz.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 56,
+              "start": 0
+            },
+            "text": "Atölyede bugün küçük bir raf hazırlıyoruz. Önce "
+          },
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 64,
+              "start": 56
+            },
+            "text": "üçüncü"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 146,
+              "start": 64
+            },
+            "text": " çizimi masaya koyup parçaların sırasını kontrol ediyoruz. Her destek için "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 151,
+              "start": 146
+            },
+            "text": "otuz santimetre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 202,
+              "start": 151
+            },
+            "text": " uzunluğunda tahta seçiyoruz. Karışım kabına "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 208,
+              "start": 202
+            },
+            "text": "iki yüz elli mililitre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 229,
+              "start": 208
+            },
+            "text": " su ekledikten sonra "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 233,
+              "start": 229
+            },
+            "text": "beş kilogram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 288,
+              "start": 233
+            },
+            "text": " toprağı yavaşça döküyoruz. Ölçümde görülen "
+          },
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 297,
+              "start": 288
+            },
+            "text": "yüzde on iki virgül beşlik"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 328,
+              "start": 297
+            },
+            "text": " farkı not ediyoruz. Kutudaki "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 330,
+              "start": 328
+            },
+            "text": "yirmi dört"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 346,
+              "start": 330
+            },
+            "text": " vidayı sayıp "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 351,
+              "start": 346
+            },
+            "text": "dörtten"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 397,
+              "start": 351
+            },
+            "text": " başlayarak uygun deliklere yerleştiriyoruz."
+          }
+        ]
+      }
+    },
+    "medium-phones:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Telefon sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört numarasını örnek olarak okuyalım. Uluslararası biçim artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi şeklindedir. Bunlar gerçek abone doğrulaması anlamına gelmez. Hesap örneği te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı yalnızca denetim toplamı sınamasıdır. Bu uzun paragraf gerçek kişisel veri içermez ve bütün kaynak aralıkları özgün baytlara aittir.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "Telefon "
+          },
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 22,
+              "start": 8
+            },
+            "text": "sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 82,
+              "start": 22
+            },
+            "text": " numarasını örnek olarak okuyalım. Uluslararası biçim "
+          },
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 101,
+              "start": 82
+            },
+            "text": "artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 184,
+              "start": 101
+            },
+            "text": " şeklindedir. Bunlar gerçek abone doğrulaması anlamına gelmez. Hesap örneği "
+          },
+          {
+            "kind": "Iban",
+            "range": {
+              "end": 216,
+              "start": 184
+            },
+            "text": "te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 363,
+              "start": 216
+            },
+            "text": " yalnızca denetim toplamı sınamasıdır. Bu uzun paragraf gerçek kişisel veri içermez ve bütün kaynak aralıkları özgün baytlara aittir."
+          }
+        ]
+      }
+    },
+    "medium-phones:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Telefon sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört numarasını örnek olarak okuyalım. Uluslararası biçim artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi şeklindedir. Bunlar gerçek abone doğrulaması anlamına gelmez. Hesap örneği te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı yalnızca denetim toplamı sınamasıdır. Bu uzun paragraf gerçek kişisel veri içermez ve bütün kaynak aralıkları özgün baytlara aittir.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "Telefon "
+          },
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 22,
+              "start": 8
+            },
+            "text": "sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 82,
+              "start": 22
+            },
+            "text": " numarasını örnek olarak okuyalım. Uluslararası biçim "
+          },
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 101,
+              "start": 82
+            },
+            "text": "artı doksan beş yüz otuz iki yüz yirmi üç kırk beş altmış yedi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 184,
+              "start": 101
+            },
+            "text": " şeklindedir. Bunlar gerçek abone doğrulaması anlamına gelmez. Hesap örneği "
+          },
+          {
+            "kind": "Iban",
+            "range": {
+              "end": 216,
+              "start": 184
+            },
+            "text": "te re üç üç, sıfır sıfır sıfır altı, bir sıfır sıfır beş, bir dokuz yedi sekiz, altı dört beş yedi, sekiz dört bir üç, iki altı"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 363,
+              "start": 216
+            },
+            "text": " yalnızca denetim toplamı sınamasıdır. Bu uzun paragraf gerçek kişisel veri içermez ve bütün kaynak aralıkları özgün baytlara aittir."
+          }
+        ]
+      }
+    },
+    "medium-quantity:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Paket üzerinde iki miligram ve üç mikrogram miktarları bulunuyor. Alan ölçümü üç metrekare, hacim ölçümü beş metreküp olarak yazılmıştır. Araç saatte doksan kilometre hızla giderken akış saniyede beş metre düzeyindedir. Görev için on ila on beş kişi ve üç ila dört gün aralığı belirtiliyor. Birimler bağlamdan çıkarılmaz, yalnızca onaylı yazımlar kullanılır. Fazladan desteklenmeyen bileşikler korunmalı ve sessizce düzeltilmemelidir.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 16,
+              "start": 0
+            },
+            "text": "Paket üzerinde "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 20,
+              "start": 16
+            },
+            "text": "iki miligram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 24,
+              "start": 20
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 29,
+              "start": 24
+            },
+            "text": "üç mikrogram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 69,
+              "start": 29
+            },
+            "text": " miktarları bulunuyor. Alan ölçümü "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 74,
+              "start": 69
+            },
+            "text": "üç metrekare"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 93,
+              "start": 74
+            },
+            "text": ", hacim ölçümü "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 98,
+              "start": 93
+            },
+            "text": "beş metreküp"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 129,
+              "start": 98
+            },
+            "text": " olarak yazılmıştır. Araç "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 137,
+              "start": 129
+            },
+            "text": "saatte doksan kilometre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 161,
+              "start": 137
+            },
+            "text": " hızla giderken akış "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 166,
+              "start": 161
+            },
+            "text": "saniyede beş metre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 195,
+              "start": 166
+            },
+            "text": " düzeyindedir. Görev için "
+          },
+          {
+            "kind": "Range",
+            "range": {
+              "end": 206,
+              "start": 195
+            },
+            "text": "on ila on beş kişi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 210,
+              "start": 206
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Range",
+            "range": {
+              "end": 218,
+              "start": 210
+            },
+            "text": "üç ila dört gün"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 399,
+              "start": 218
+            },
+            "text": " aralığı belirtiliyor. Birimler bağlamdan çıkarılmaz, yalnızca onaylı yazımlar kullanılır. Fazladan desteklenmeyen bileşikler korunmalı ve sessizce düzeltilmemelidir."
+          }
+        ]
+      }
+    },
+    "medium-quantity:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Paket üzerinde iki miligram ve üç mikrogram miktarları bulunuyor. Alan ölçümü üç metrekare, hacim ölçümü beş metreküp olarak yazılmıştır. Araç saatte doksan kilometre hızla giderken akış saniyede beş metre düzeyindedir. Görev için on ila on beş kişi ve üç ila dört gün aralığı belirtiliyor. Birimler bağlamdan çıkarılmaz, yalnızca onaylı yazımlar kullanılır. Fazladan desteklenmeyen bileşikler korunmalı ve sessizce düzeltilmemelidir.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 16,
+              "start": 0
+            },
+            "text": "Paket üzerinde "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 20,
+              "start": 16
+            },
+            "text": "iki miligram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 24,
+              "start": 20
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 29,
+              "start": 24
+            },
+            "text": "üç mikrogram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 69,
+              "start": 29
+            },
+            "text": " miktarları bulunuyor. Alan ölçümü "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 74,
+              "start": 69
+            },
+            "text": "üç metrekare"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 93,
+              "start": 74
+            },
+            "text": ", hacim ölçümü "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 98,
+              "start": 93
+            },
+            "text": "beş metreküp"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 129,
+              "start": 98
+            },
+            "text": " olarak yazılmıştır. Araç "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 137,
+              "start": 129
+            },
+            "text": "saatte doksan kilometre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 161,
+              "start": 137
+            },
+            "text": " hızla giderken akış "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 166,
+              "start": 161
+            },
+            "text": "saniyede beş metre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 195,
+              "start": 166
+            },
+            "text": " düzeyindedir. Görev için "
+          },
+          {
+            "kind": "Range",
+            "range": {
+              "end": 206,
+              "start": 195
+            },
+            "text": "on ila on beş kişi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 210,
+              "start": 206
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Range",
+            "range": {
+              "end": 218,
+              "start": 210
+            },
+            "text": "üç ila dört gün"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 399,
+              "start": 218
+            },
+            "text": " aralığı belirtiliyor. Birimler bağlamdan çıkarılmaz, yalnızca onaylı yazımlar kullanılır. Fazladan desteklenmeyen bileşikler korunmalı ve sessizce düzeltilmemelidir."
+          }
+        ]
+      }
+    },
+    "medium-roman:preserve": {
+      "result": {
+        "complete": false,
+        "issues": [
+          {
+            "category": "Ambiguous",
+            "explanation": "expression requires an explicit supported cue or hint",
+            "range": {
+              "end": 94,
+              "start": 92
+            }
+          },
+          {
+            "category": "Ambiguous",
+            "explanation": "expression requires an explicit supported cue or hint",
+            "range": {
+              "end": 100,
+              "start": 98
+            }
+          },
+          {
+            "category": "Ambiguous",
+            "explanation": "expression requires an explicit supported cue or hint",
+            "range": {
+              "end": 159,
+              "start": 156
+            }
+          }
+        ],
+        "locale": "tr-TR",
+        "normalized_text": "ikinci Dünya Savaşı ifadesi ile yirmi birinci yüzyıl ifadesi açık sıra bağlamı sağlar. Ancak IV ve I. gibi tek başına duran diziler tahmin edilmez. Toplam 25. ifadesi de belirsizliğini korur. profesör Ali, doktor Ali ve pe te te örnekleri küçük onaylı sözlükten okunur. nato ve iban sözcükleri genel bir büyük harf çözümleyicisine gerek duyulmadan belirlenir.",
+        "segments": [
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "ikinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 32,
+              "start": 3
+            },
+            "text": " Dünya Savaşı ifadesi ile "
+          },
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 36,
+              "start": 32
+            },
+            "text": "yirmi birinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 92,
+              "start": 36
+            },
+            "text": " yüzyıl ifadesi açık sıra bağlamı sağlar. Ancak "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 94,
+              "start": 92
+            },
+            "text": "IV"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 98,
+              "start": 94
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 100,
+              "start": 98
+            },
+            "text": "I."
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 156,
+              "start": 100
+            },
+            "text": " gibi tek başına duran diziler tahmin edilmez. Toplam "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 159,
+              "start": 156
+            },
+            "text": "25."
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 194,
+              "start": 159
+            },
+            "text": " ifadesi de belirsizliğini korur. "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 199,
+              "start": 194
+            },
+            "text": "profesör"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 205,
+              "start": 199
+            },
+            "text": " Ali, "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 208,
+              "start": 205
+            },
+            "text": "doktor"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 216,
+              "start": 208
+            },
+            "text": " Ali ve "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 219,
+              "start": 216
+            },
+            "text": "pe te te"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 268,
+              "start": 219
+            },
+            "text": " örnekleri küçük onaylı sözlükten okunur. "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 272,
+              "start": 268
+            },
+            "text": "nato"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 276,
+              "start": 272
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 280,
+              "start": 276
+            },
+            "text": "iban"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 364,
+              "start": 280
+            },
+            "text": " sözcükleri genel bir büyük harf çözümleyicisine gerek duyulmadan belirlenir."
+          }
+        ]
+      }
+    },
+    "medium-roman:reject": {
+      "error": "unresolved",
+      "issues": [
+        {
+          "category": "Ambiguous",
+          "explanation": "expression requires an explicit supported cue or hint",
+          "range": {
+            "end": 94,
+            "start": 92
+          }
+        },
+        {
+          "category": "Ambiguous",
+          "explanation": "expression requires an explicit supported cue or hint",
+          "range": {
+            "end": 100,
+            "start": 98
+          }
+        },
+        {
+          "category": "Ambiguous",
+          "explanation": "expression requires an explicit supported cue or hint",
+          "range": {
+            "end": 159,
+            "start": 156
+          }
+        }
+      ]
+    },
+    "medium-unicode:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "İstanbul sözcüğünün yazımı olduğu gibi kalır. Ayrışık ü harfi tanıma görünümünde birleşir ama kaynak aralıkları asıl metni gösterir. 👩‍👩‍👧‍👦 simgesi tek bir genişletilmiş grafemdir. dördün ve yirmi beş Türk lirası örneklerinde tam ek ve miktar birlikte işlenir. Satır sonu kümeleri ve işaretlerle birleşen karakterler yanlış bayt aralığına bölünmemelidir. Bu özellik hızlı yolda da korunur.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 227,
+              "start": 0
+            },
+            "text": "İstanbul sözcüğünün yazımı olduğu gibi kalır. Ayrışık ü harfi tanıma görünümünde birleşir ama kaynak aralıkları asıl metni gösterir. 👩‍👩‍👧‍👦 simgesi tek bir genişletilmiş grafemdir. "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 235,
+              "start": 227
+            },
+            "text": "dördün"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 239,
+              "start": 235
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 244,
+              "start": 239
+            },
+            "text": "yirmi beş Türk lirası"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 437,
+              "start": 244
+            },
+            "text": " örneklerinde tam ek ve miktar birlikte işlenir. Satır sonu kümeleri ve işaretlerle birleşen karakterler yanlış bayt aralığına bölünmemelidir. Bu özellik hızlı yolda da korunur."
+          }
+        ]
+      }
+    },
+    "medium-unicode:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "İstanbul sözcüğünün yazımı olduğu gibi kalır. Ayrışık ü harfi tanıma görünümünde birleşir ama kaynak aralıkları asıl metni gösterir. 👩‍👩‍👧‍👦 simgesi tek bir genişletilmiş grafemdir. dördün ve yirmi beş Türk lirası örneklerinde tam ek ve miktar birlikte işlenir. Satır sonu kümeleri ve işaretlerle birleşen karakterler yanlış bayt aralığına bölünmemelidir. Bu özellik hızlı yolda da korunur.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 227,
+              "start": 0
+            },
+            "text": "İstanbul sözcüğünün yazımı olduğu gibi kalır. Ayrışık ü harfi tanıma görünümünde birleşir ama kaynak aralıkları asıl metni gösterir. 👩‍👩‍👧‍👦 simgesi tek bir genişletilmiş grafemdir. "
+          },
+          {
+            "kind": "Cardinal",
+            "range": {
+              "end": 235,
+              "start": 227
+            },
+            "text": "dördün"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 239,
+              "start": 235
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Money",
+            "range": {
+              "end": 244,
+              "start": 239
+            },
+            "text": "yirmi beş Türk lirası"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 437,
+              "start": 244
+            },
+            "text": " örneklerinde tam ek ve miktar birlikte işlenir. Satır sonu kümeleri ve işaretlerle birleşen karakterler yanlış bayt aralığına bölünmemelidir. Bu özellik hızlı yolda da korunur."
+          }
+        ]
+      }
+    },
+    "medium-web:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Başvuru bilgilerini info et ornek nokta kom adresine iletin. Ayrıntılı açıklama ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum sayfasında bulunuyor. Bu adreslere bağlanmadan yalnızca yazılı yapıyı okuyoruz. Sözcüklerin özgün büyük küçük harf biçimleri korunur ve sayısal karakterlerin sırası değiştirilmez. hashtag yapayzeka ve araştırma notlarını birlikte değerlendirin.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 21,
+              "start": 0
+            },
+            "text": "Başvuru bilgilerini "
+          },
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 35,
+              "start": 21
+            },
+            "text": "info et ornek nokta kom"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 77,
+              "start": 35
+            },
+            "text": " adresine iletin. Ayrıntılı açıklama "
+          },
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 119,
+              "start": 77
+            },
+            "text": "ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 322,
+              "start": 119
+            },
+            "text": " sayfasında bulunuyor. Bu adreslere bağlanmadan yalnızca yazılı yapıyı okuyoruz. Sözcüklerin özgün büyük küçük harf biçimleri korunur ve sayısal karakterlerin sırası değiştirilmez. "
+          },
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 332,
+              "start": 322
+            },
+            "text": "hashtag yapayzeka"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 333,
+              "start": 332
+            },
+            "text": " "
+          },
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 334,
+              "start": 333
+            },
+            "text": "ve"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 383,
+              "start": 334
+            },
+            "text": " araştırma notlarını birlikte değerlendirin."
+          }
+        ]
+      }
+    },
+    "medium-web:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "Başvuru bilgilerini info et ornek nokta kom adresine iletin. Ayrıntılı açıklama ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum sayfasında bulunuyor. Bu adreslere bağlanmadan yalnızca yazılı yapıyı okuyoruz. Sözcüklerin özgün büyük küçük harf biçimleri korunur ve sayısal karakterlerin sırası değiştirilmez. hashtag yapayzeka ve araştırma notlarını birlikte değerlendirin.",
+        "segments": [
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 21,
+              "start": 0
+            },
+            "text": "Başvuru bilgilerini "
+          },
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 35,
+              "start": 21
+            },
+            "text": "info et ornek nokta kom"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 77,
+              "start": 35
+            },
+            "text": " adresine iletin. Ayrıntılı açıklama "
+          },
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 119,
+              "start": 77
+            },
+            "text": "ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 322,
+              "start": 119
+            },
+            "text": " sayfasında bulunuyor. Bu adreslere bağlanmadan yalnızca yazılı yapıyı okuyoruz. Sözcüklerin özgün büyük küçük harf biçimleri korunur ve sayısal karakterlerin sırası değiştirilmez. "
+          },
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 332,
+              "start": 322
+            },
+            "text": "hashtag yapayzeka"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 333,
+              "start": 332
+            },
+            "text": " "
+          },
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 334,
+              "start": 333
+            },
+            "text": "ve"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 383,
+              "start": 334
+            },
+            "text": " araştırma notlarını birlikte değerlendirin."
+          }
+        ]
+      }
+    },
+    "money:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş",
+        "segments": [
+          {
+            "kind": "Money",
+            "range": {
+              "end": 15,
+              "start": 0
+            },
+            "text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş"
+          }
+        ]
+      }
+    },
+    "money:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş",
+        "segments": [
+          {
+            "kind": "Money",
+            "range": {
+              "end": 15,
+              "start": 0
+            },
+            "text": "bir milyon sekiz yüz kırk yedi bin iki yüz doksan üç Türk lirası elli kuruş"
+          }
+        ]
+      }
+    },
+    "ordinal:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "üçüncü ve birincinin ve dördüncüye",
+        "segments": [
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "üçüncü"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 12,
+              "start": 8
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 18,
+              "start": 12
+            },
+            "text": "birincinin"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 22,
+              "start": 18
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 27,
+              "start": 22
+            },
+            "text": "dördüncüye"
+          }
+        ]
+      }
+    },
+    "ordinal:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "üçüncü ve birincinin ve dördüncüye",
+        "segments": [
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "üçüncü"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 12,
+              "start": 8
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 18,
+              "start": 12
+            },
+            "text": "birincinin"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 22,
+              "start": 18
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Ordinal",
+            "range": {
+              "end": 27,
+              "start": 22
+            },
+            "text": "dördüncüye"
+          }
+        ]
+      }
+    },
+    "partial:preserve": {
+      "result": {
+        "complete": false,
+        "issues": [
+          {
+            "category": "Ambiguous",
+            "explanation": "expression requires an explicit supported cue or hint",
+            "range": {
+              "end": 12,
+              "start": 7
+            }
+          },
+          {
+            "category": "Ambiguous",
+            "explanation": "expression requires an explicit supported cue or hint",
+            "range": {
+              "end": 16,
+              "start": 14
+            }
+          },
+          {
+            "category": "InvalidExpression",
+            "explanation": "expression has an invalid value, grammar, or suffix",
+            "range": {
+              "end": 23,
+              "start": 18
+            }
+          }
+        ],
+        "locale": "tr-TR",
+        "normalized_text": "yirmi beş Türk lirası; 1.234; IV; 10-15",
+        "segments": [
+          {
+            "kind": "Money",
+            "range": {
+              "end": 5,
+              "start": 0
+            },
+            "text": "yirmi beş Türk lirası"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 7,
+              "start": 5
+            },
+            "text": "; "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 12,
+              "start": 7
+            },
+            "text": "1.234"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 14,
+              "start": 12
+            },
+            "text": "; "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 16,
+              "start": 14
+            },
+            "text": "IV"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 18,
+              "start": 16
+            },
+            "text": "; "
+          },
+          {
+            "kind": "Unresolved",
+            "range": {
+              "end": 23,
+              "start": 18
+            },
+            "text": "10-15"
+          }
+        ]
+      }
+    },
+    "partial:reject": {
+      "error": "unresolved",
+      "issues": [
+        {
+          "category": "Ambiguous",
+          "explanation": "expression requires an explicit supported cue or hint",
+          "range": {
+            "end": 12,
+            "start": 7
+          }
+        },
+        {
+          "category": "Ambiguous",
+          "explanation": "expression requires an explicit supported cue or hint",
+          "range": {
+            "end": 16,
+            "start": 14
+          }
+        },
+        {
+          "category": "InvalidExpression",
+          "explanation": "expression has an invalid value, grammar, or suffix",
+          "range": {
+            "end": 23,
+            "start": 18
+          }
+        }
+      ]
+    },
+    "percent:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yüzde otuz yedi virgül beşlik sapma ve yüzde üç virgül iki beşten",
+        "segments": [
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "yüzde otuz yedi virgül beşlik"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 19,
+              "start": 9
+            },
+            "text": " sapma ve "
+          },
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 28,
+              "start": 19
+            },
+            "text": "yüzde üç virgül iki beşten"
+          }
+        ]
+      }
+    },
+    "percent:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "yüzde otuz yedi virgül beşlik sapma ve yüzde üç virgül iki beşten",
+        "segments": [
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 9,
+              "start": 0
+            },
+            "text": "yüzde otuz yedi virgül beşlik"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 19,
+              "start": 9
+            },
+            "text": " sapma ve "
+          },
+          {
+            "kind": "Percent",
+            "range": {
+              "end": 28,
+              "start": 19
+            },
+            "text": "yüzde üç virgül iki beşten"
+          }
+        ]
+      }
+    },
+    "phone:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört",
+        "segments": [
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 14,
+              "start": 0
+            },
+            "text": "sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört"
+          }
+        ]
+      }
+    },
+    "phone:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört",
+        "segments": [
+          {
+            "kind": "Telephone",
+            "range": {
+              "end": 14,
+              "start": 0
+            },
+            "text": "sıfır sekiz yüz elli iki yüz yirmi iki otuz üç kırk dört"
+          }
+        ]
+      }
+    },
+    "range:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on ila on beş kişi ve bir virgül sıfır beş ila iki virgül beş sıfır kilogram",
+        "segments": [
+          {
+            "kind": "Range",
+            "range": {
+              "end": 11,
+              "start": 0
+            },
+            "text": "on ila on beş kişi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 15,
+              "start": 11
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Range",
+            "range": {
+              "end": 27,
+              "start": 15
+            },
+            "text": "bir virgül sıfır beş ila iki virgül beş sıfır kilogram"
+          }
+        ]
+      }
+    },
+    "range:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "on ila on beş kişi ve bir virgül sıfır beş ila iki virgül beş sıfır kilogram",
+        "segments": [
+          {
+            "kind": "Range",
+            "range": {
+              "end": 11,
+              "start": 0
+            },
+            "text": "on ila on beş kişi"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 15,
+              "start": 11
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Range",
+            "range": {
+              "end": 27,
+              "start": 15
+            },
+            "text": "bir virgül sıfır beş ila iki virgül beş sıfır kilogram"
+          }
+        ]
+      }
+    },
+    "rate:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "saatte doksan kilometre ve saniyede beş metre",
+        "segments": [
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "saatte doksan kilometre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 12,
+              "start": 8
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 17,
+              "start": 12
+            },
+            "text": "saniyede beş metre"
+          }
+        ]
+      }
+    },
+    "rate:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "saatte doksan kilometre ve saniyede beş metre",
+        "segments": [
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "saatte doksan kilometre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 12,
+              "start": 8
+            },
+            "text": " ve "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 17,
+              "start": 12
+            },
+            "text": "saniyede beş metre"
+          }
+        ]
+      }
+    },
+    "roman:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ikinci Dünya Savaşı ve yirmi birinci yüzyıl",
+        "segments": [
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "ikinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 23,
+              "start": 3
+            },
+            "text": " Dünya Savaşı ve "
+          },
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 27,
+              "start": 23
+            },
+            "text": "yirmi birinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 36,
+              "start": 27
+            },
+            "text": " yüzyıl"
+          }
+        ]
+      }
+    },
+    "roman:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ikinci Dünya Savaşı ve yirmi birinci yüzyıl",
+        "segments": [
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 3,
+              "start": 0
+            },
+            "text": "ikinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 23,
+              "start": 3
+            },
+            "text": " Dünya Savaşı ve "
+          },
+          {
+            "kind": "Roman",
+            "range": {
+              "end": 27,
+              "start": 23
+            },
+            "text": "yirmi birinci"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 36,
+              "start": 27
+            },
+            "text": " yüzyıl"
+          }
+        ]
+      }
+    },
+    "symbol:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "hashtag yapayzeka ve profesör Ali ve benzeri pe te te nato iban",
+        "segments": [
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 10,
+              "start": 0
+            },
+            "text": "hashtag yapayzeka"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 11,
+              "start": 10
+            },
+            "text": " "
+          },
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 12,
+              "start": 11
+            },
+            "text": "ve"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 13,
+              "start": 12
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 18,
+              "start": 13
+            },
+            "text": "profesör"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 23,
+              "start": 18
+            },
+            "text": " Ali "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 26,
+              "start": 23
+            },
+            "text": "ve benzeri"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 27,
+              "start": 26
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 30,
+              "start": 27
+            },
+            "text": "pe te te"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 31,
+              "start": 30
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 35,
+              "start": 31
+            },
+            "text": "nato"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 36,
+              "start": 35
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 40,
+              "start": 36
+            },
+            "text": "iban"
+          }
+        ]
+      }
+    },
+    "symbol:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "hashtag yapayzeka ve profesör Ali ve benzeri pe te te nato iban",
+        "segments": [
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 10,
+              "start": 0
+            },
+            "text": "hashtag yapayzeka"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 11,
+              "start": 10
+            },
+            "text": " "
+          },
+          {
+            "kind": "Symbol",
+            "range": {
+              "end": 12,
+              "start": 11
+            },
+            "text": "ve"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 13,
+              "start": 12
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 18,
+              "start": 13
+            },
+            "text": "profesör"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 23,
+              "start": 18
+            },
+            "text": " Ali "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 26,
+              "start": 23
+            },
+            "text": "ve benzeri"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 27,
+              "start": 26
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 30,
+              "start": 27
+            },
+            "text": "pe te te"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 31,
+              "start": 30
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 35,
+              "start": 31
+            },
+            "text": "nato"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 36,
+              "start": 35
+            },
+            "text": " "
+          },
+          {
+            "kind": "Abbreviation",
+            "range": {
+              "end": 40,
+              "start": 36
+            },
+            "text": "iban"
+          }
+        ]
+      }
+    },
+    "units:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "beş kilogramdan iki miligram üç metrekare iki yüz elli mililitre iki mikrogram",
+        "segments": [
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "beş kilogramdan"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 9,
+              "start": 8
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 13,
+              "start": 9
+            },
+            "text": "iki miligram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 14,
+              "start": 13
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 19,
+              "start": 14
+            },
+            "text": "üç metrekare"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 20,
+              "start": 19
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 26,
+              "start": 20
+            },
+            "text": "iki yüz elli mililitre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 27,
+              "start": 26
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 32,
+              "start": 27
+            },
+            "text": "iki mikrogram"
+          }
+        ]
+      }
+    },
+    "units:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "beş kilogramdan iki miligram üç metrekare iki yüz elli mililitre iki mikrogram",
+        "segments": [
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 8,
+              "start": 0
+            },
+            "text": "beş kilogramdan"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 9,
+              "start": 8
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 13,
+              "start": 9
+            },
+            "text": "iki miligram"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 14,
+              "start": 13
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 19,
+              "start": 14
+            },
+            "text": "üç metrekare"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 20,
+              "start": 19
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 26,
+              "start": 20
+            },
+            "text": "iki yüz elli mililitre"
+          },
+          {
+            "kind": "Verbatim",
+            "range": {
+              "end": 27,
+              "start": 26
+            },
+            "text": " "
+          },
+          {
+            "kind": "Unit",
+            "range": {
+              "end": 32,
+              "start": 27
+            },
+            "text": "iki mikrogram"
+          }
+        ]
+      }
+    },
+    "url:preserve": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum",
+        "segments": [
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 42,
+              "start": 0
+            },
+            "text": "ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum"
+          }
+        ]
+      }
+    },
+    "url:reject": {
+      "result": {
+        "complete": true,
+        "issues": [],
+        "locale": "tr-TR",
+        "normalized_text": "ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum",
+        "segments": [
+          {
+            "kind": "Electronic",
+            "range": {
+              "end": 42,
+              "start": 0
+            },
+            "text": "ha te te pe es iki nokta eğik çizgi eğik çizgi ornek nokta kom iki nokta sekiz sıfır sekiz sıfır eğik çizgi a sıfır bir soru işareti x eşittir iki ve y eşittir yüzde iki sıfır kare bolum"
+          }
+        ]
+      }
+    }
+  }
+}

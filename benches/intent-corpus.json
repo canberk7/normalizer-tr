@@ -1,0 +1,11 @@
+[
+  {"id":"intent-ordinal","class":"hint-ordinal","text":"25.","cohort":"short","hint":{"start":0,"end":3,"kind":"ordinal"}},
+  {"id":"intent-roman","class":"hint-roman","text":"MMMCMXCIX","cohort":"short","hint":{"start":0,"end":9,"kind":"roman"}},
+  {"id":"intent-range","class":"hint-range","text":"10-15","cohort":"short","hint":{"start":0,"end":5,"kind":"range"}},
+  {"id":"intent-phone","class":"hint-telephone","text":"5321234567","cohort":"short","hint":{"start":0,"end":10,"kind":"telephone"}},
+  {"id":"intent-web","class":"hint-electronic","text":"ornek.com","cohort":"short","hint":{"start":0,"end":9,"kind":"electronic"}},
+  {"id":"intent-invalid","class":"invalid-hint","text":"IIII","cohort":"short","hint":{"start":0,"end":4,"kind":"roman"}},
+  {"id":"medium-intent","class":"hint-ordinal","cohort":"medium","hint":{"start":0,"end":3,"kind":"ordinal"},"text":"25. satırdaki sıra açık bir ipucu ile okunur. Bu paragraf çağıranın özgün bayt koordinatlarını koruyan tam ifade niyetini sınar. Sıradan sözcüklerin büyük küçük harfleri değişmez ve hiçbir çıktı önceden önbelleğe alınmaz. Sonuç metni ile bölüm metinleri birlikte sahiplenilir. Bütün doğrulama ve ipucu sınırları zamanlanan çağrının içindedir."},
+  {"id":"medium-digits","class":"hint-digits","cohort":"medium","hint":{"start":0,"end":5,"kind":"digits"},"text":"00042 örneğinin baştaki sıfırları yalnızca açık basamak ipucu sayesinde seslendirilir. Bu uzun paragrafın amacı ipucu ve metin haritalamasının orta boy girdilerde de gerçekten zamanlanmasını sağlamaktır. Sonuç yalnızca doğru metni değil, bütün kaynak aralıklarını ve tamlık bilgisini de taşır. Hiçbir kaynak karakteri sessizce silinmemelidir."},
+  {"id":"medium-date","class":"date","cohort":"medium","text":"tarih 14.03.2026 ve saat 09:30 bugün kullanılan açık zaman örnekleridir. Geçerli takvim ve saat değerleri doğru okunurken aynı paragraf içinde tarih 31.04.2026 geçersiz kalır. Bu karma metinde kısmi sonuç ile kesin hata davranışı ayrı ayrı sınanır. Eski ve yeni kimliklerin ikisi de bilinen zaman kurallarını ve kaynak aralıklarını korumalıdır."}
+]

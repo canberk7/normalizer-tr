@@ -1,0 +1,40 @@
+[package]
+name = "normalizer-tr"
+version = "0.3.0"
+edition = "2024"
+rust-version = "1.94"
+description = "Bounded Turkish text-to-speech normalization with original-source diagnostics"
+license = "Apache-2.0"
+repository = "https://github.com/erdemtuna/normalizer-tr"
+keywords = ["turkish", "tts", "normalization", "text-to-speech"]
+categories = ["text-processing"]
+publish = false
+include = ["/src/**", "/tests/**", "/examples/**", "/benches/**", "/docs/**", "/Cargo.toml", "/Cargo.lock", "/rust-toolchain.toml", "/README.md", "/CONTRIBUTING.md", "/PERFORMANCE.md", "/LICENSE", "/THIRD_PARTY_NOTICES.md"]
+
+[[bench]]
+name = "latency"
+harness = false
+required-features = ["serde"]
+
+[features]
+default = []
+serde = ["dep:serde"]
+
+[workspace]
+members = ["bindings/python"]
+default-members = ["."]
+resolver = "3"
+
+[dependencies]
+regex = "=1.13.1"
+unicode-normalization = "=0.1.25"
+unicode-segmentation = "=1.13.3"
+serde = { version = "=1.0.229", features = ["derive"], optional = true }
+
+[dev-dependencies]
+proptest = "=1.11.0"
+serde_json = "=1.0.151"
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"

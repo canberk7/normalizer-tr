@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    name: Rust and installed Python binding (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      RUSTDOCFLAGS: -D warnings
+      PYTHONUTF8: "1"
+    steps:
+      - name: Check out source
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Set up CPython
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.13"
+      - name: Set up pinned Rust
+        uses: dtolnay/rust-toolchain@89b12181fb390509a0842a86cc55eeb8eb928c1d # stable
+        with:
+          toolchain: "1.94.0"
+          components: rustfmt, clippy
+      - name: Select build interpreter
+        run: '"PYO3_PYTHON=$((Get-Command python).Source)" >> $env:GITHUB_ENV'
+      - name: Check Rust formatting
+        run: cargo fmt --all --check
+      - name: Strict workspace Clippy
+        run: cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
+      - name: Test default core
+        run: cargo test --locked
+      - name: Test no-default core
+        run: cargo test --locked --no-default-features
+      - name: Test Serde core
+        run: cargo test --locked --all-features
+      - name: Build API documentation
+        run: cargo doc --locked --no-deps --all-features
+      - name: Install Python development tools
+        run: python -m pip install -r .\bindings\python\requirements-dev.txt -c .\bindings\python\constraints.lock
+      - name: Check Python formatting and lint
+        run: |
+          python -m ruff check bindings\python benches scripts &&
+          python -m ruff format --check bindings\python benches scripts
+      - name: Check Python types
+        run: python -m mypy bindings\python\python --check-untyped-defs
+      - name: Test verification helpers
+        run: python .\scripts\test_verification.py
+      - name: Build native wheel
+        run: python -m maturin build --release --locked --manifest-path .\bindings\python\Cargo.toml --interpreter python --out .\target\ci-wheels
+      - name: Install built wheel
+        run: |
+          $wheels = @(Get-ChildItem -LiteralPath .\target\ci-wheels -Filter '*.whl')
+          if ($wheels.Count -ne 1) { throw 'Expected exactly one built wheel.' }
+          python -m pip install --no-deps $wheels[0].FullName
+      - name: Test installed Python API without speech models
+        run: python -m pytest .\bindings\python\tests -q
+      - name: Check standalone core packaging
+        run: cargo package -p normalizer-tr --locked

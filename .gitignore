@@ -1,0 +1,15 @@
+/target/
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+*.egg-info/
+/bindings/python/.venv/
+/.venv/
+.env
+.env.*
+*.pt
+*.wav
+*.whl
+*.crate
+*.pyd
