@@ -30,9 +30,10 @@ Core/binding development needs no Torch, model files or credentials.
 
 ## Code layout
 
-`src/classify` owns scanning, fixed reader priority and whole-span claims;
-`src/domain` owns validated values; `src/numerals.rs`, `src/morphology.rs` and
-`src/verbalize.rs` share exact rendering and spoken-tail metadata.
+`src/classify` owns scanning, fixed reader priority, whole-span claims and the
+forced order; `src/domain` owns validated values and the literal reading;
+`src/numerals.rs`, `src/morphology.rs` and `src/verbalize.rs` share exact
+rendering and spoken-tail metadata.
 `src/source_map.rs` maps NFC recognition to original UTF-8/grapheme coordinates.
 `src/pipeline.rs` composes the source partition, diagnostics and budgets.
 The Python binding calls this engine; it does not duplicate language rules.

@@ -16,6 +16,7 @@ use crate::{
         electronic::Electronic,
         identifiers::Telephone,
         lexicon,
+        literal::Literal,
         numeric::{self as numbers, Numeric, NumericRange},
     },
     model::Value,
@@ -89,6 +90,7 @@ pub(super) fn hint(text: &str, kind: HintKind) -> Option<Value> {
                 .map_or((text, None), |(body, noun)| (body, Some(noun)));
             Some(Value::Range(NumericRange::parse(body, noun)?))
         }
+        HintKind::Literal => Some(Value::Literal(Literal::parse(text))),
     }
 }
 

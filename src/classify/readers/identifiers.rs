@@ -130,7 +130,7 @@ fn iban_end(text: &str, tokens: &[Token<'_>], index: usize) -> usize {
     let mut end = index;
     let mut characters = tokens[index].text.len();
     while let Some(next) = tokens.get(end + 1) {
-        if lexicon::abbreviation(next.text).is_some()
+        if lexicon::written(next.text)
             || numeric::label(next.text)
             || (next.text.bytes().all(|b| b.is_ascii_digit())
                 && tokens.get(end + 2).is_some_and(|label| {

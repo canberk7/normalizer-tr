@@ -6,7 +6,7 @@ from release_artifacts import check_members, check_metadata, wheel_platform
 
 METADATA = (
     "Name: normalizer-tr\n"
-    "Version: 0.3.0\n"
+    "Version: 0.4.0\n"
     "Requires-Python: <3.15, >=3.11\n"
     "License-Expression: Apache-2.0\n"
 )
@@ -20,7 +20,7 @@ class ReleaseTests(unittest.TestCase):
         for text in (
             METADATA.replace(">=3.11", ">=3.10"),
             METADATA.replace("normalizer-tr", "different-package"),
-            METADATA.replace("0.3.0", "0.3.1"),
+            METADATA.replace("0.4.0", "0.4.1"),
             METADATA + "Requires-Dist: torch\n",
         ):
             with self.subTest(text=text), self.assertRaises(RuntimeError):

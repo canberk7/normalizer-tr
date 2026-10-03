@@ -39,6 +39,9 @@ pub enum AmbiguityPolicy {
     Preserve,
     /// Return an error containing unresolved diagnostics, without partial output.
     Reject,
+    /// Speak everything: read every unresolved span with a forced reading and still return
+    /// its issue, say readings in everyday style, and name stray symbols and spelled letters.
+    Forced,
 }
 
 /// Explicit interpretation of a whole original-source span.
@@ -63,6 +66,9 @@ pub enum HintKind {
     Telephone,
     /// Supported whole ASCII address or cued/hinted bare domain.
     Electronic,
+    /// The span as written, with digit runs, separators, symbols and spelled letters spoken;
+    /// it reads any content.
+    Literal,
 }
 
 /// Caller intent at original grapheme-safe byte coordinates.
@@ -87,10 +93,10 @@ impl Hint {
     }
 }
 
-/// Per-call options. No implicit guessing policy is provided.
+/// Per-call options. Guessing is never implicit: [`AmbiguityPolicy::Forced`] is opt-in.
 #[derive(Clone, Debug, Default)]
 pub struct NormalizeOptions {
-    /// Preserve unresolved spans by default, or reject them explicitly.
+    /// Preserve unresolved spans by default, or reject or force them explicitly.
     pub ambiguity_policy: AmbiguityPolicy,
     /// Non-overlapping, whole-expression hints in original-source coordinates.
     pub hints: Vec<Hint>,
@@ -124,18 +130,20 @@ pub enum SegmentKind {
     Time,
     /// Approved abbreviation.
     Abbreviation,
-    /// Contextual or explicitly hinted numerical range.
+    /// Contextual, explicitly hinted or forced numerical range.
     Range,
     /// Grouped Turkish telephone expression.
     Telephone,
     /// Full checksum-valid Turkish IBAN.
     Iban,
-    /// Canonical uppercase Roman numeral with explicit/contextual intent.
+    /// Canonical uppercase Roman numeral with explicit, contextual or forced intent.
     Roman,
     /// Supported email or web address.
     Electronic,
     /// Approved prose hashtag or ampersand.
     Symbol,
+    /// Span read as written, with its digit runs, separators, symbols and spelled letters spoken.
+    Literal,
 }
 
 /// Machine-readable reason for preserved linguistic work.

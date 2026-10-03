@@ -1,7 +1,8 @@
 //! A local, synchronous Turkish text-to-speech normalizer.
 //!
 //! The default preserves unresolved spans and reports them. Use
-//! [`AmbiguityPolicy::Reject`] when partial speech is not acceptable.
+//! [`AmbiguityPolicy::Reject`] when partial speech is not acceptable, or
+//! [`AmbiguityPolicy::Forced`] to have every unresolved span read as well.
 //! Original source ranges are UTF-8 byte coordinates, not character indices.
 //!
 //! ```

@@ -25,5 +25,13 @@ try:
     n.normalize("1.234", ambiguity_policy="reject")
 except NormalizationError as error:
     print({"code": error.code, "issues": error.issues})
+forced = n.normalize("25 TL; 1.234", ambiguity_policy="forced")
+print(
+    {
+        "forced": forced.normalized_text,
+        "complete": forced.complete,
+        "issues": forced.issues,
+    }
+)
 assert n.normalize("IV", hints=(Hint(0, 2, "roman"),)).normalized_text == "dört"
 print({"normalizer_id": n.normalizer_id})

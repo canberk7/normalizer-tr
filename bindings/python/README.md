@@ -1,6 +1,6 @@
 # Python binding
 
-Distribution `normalizer-tr` 0.3.0; import `normalizer_tr`, native submodule
+Distribution `normalizer-tr` 0.4.0; import `normalizer_tr`, native submodule
 `normalizer_tr._native`. This is the Python bridge to the same Rust engine, not a
 second implementation. Release target: ordinary CPython 3.11–3.14 on
 Windows/Linux x64 and macOS x64/arm64. Linux requires glibc 2.28+ and macOS
@@ -46,6 +46,12 @@ try:
 except NormalizationError as error:
     assert error.code == "unresolved"
     assert error.issues
+forced = n.normalize("25 TL; 1.234", ambiguity_policy="forced")
+assert forced.normalized_text == "yirmi beş lira; bin iki yüz otuz dört"
+assert not forced.complete and forced.issues == r.issues
+assert forced.segments[2].rule_id == "forced.cardinal"
+literal = n.normalize("2.5.1", hints=(Hint(0, 5, "literal"),))
+assert literal.normalized_text == "iki nokta beş nokta bir"
 ```
 
 `Normalizer()` is the only constructor; there is no selector argument or older
@@ -61,8 +67,25 @@ deadline_ms=None)` takes Python str, typed Hint objects, optional
 CancellationToken, and an integer deadline1..60000ms. Booleans do not count as
 integer coordinates/deadlines; surrogates are invalid input. Call-shape errors
 are TypeError/ValueError, never partial success. Hint kinds:
-cardinal/digits/date/time/ordinal/roman/range/telephone/electronic.
+cardinal/digits/date/time/ordinal/roman/range/telephone/electronic/literal.
 Whole-span/grapheme/overlap/content checks are authoritative in Rust.
+
+`ambiguity_policy` is `"preserve"` (default: unresolved spans stay as written),
+`"reject"` (error, no result) or `"forced"`. Forced speaks everything for a
+speech model: it reads every unresolved span with the first reading of a fixed
+order, or literally when none fits, and still returns its issue, so `complete`
+stays false; it speaks in everyday style (`4,25` is `dört virgül yirmi beş`,
+`TL` is `lira`, `10-15` is `on tire on beş`, `24/7` is `yirmi dört slaş yedi`,
+`12:05` is `on iki sıfır beş`, `#` is `heşteg`, `1/2` is `bir bölü iki`,
+`1.si` is `birincisi`); it names
+symbols and spells letters (`+` is `artı`, `B` is `Be`, `TK` is `Te Ke`); and
+it reads text with bidirectional controls, which the other policies reject, as
+if they were not there. The abbreviation
+lexicon (`ABD` is `a be de`, `Cad.` is `caddesi`, `Sipariş No:` is
+`Sipariş numarası`) reads the same under every policy. Forced segments keep
+their reading's kind and have a `forced.` rule id. The `"literal"` hint reads a
+span as written. The order and the literal rules are in the
+[normalization reference](../../docs/normalization.md#forced-readings).
 
 `NormalizationError` has code, immutable issues and limit_kind. Codes:
 invalid_input, invalid_hint, invalid_configuration, limit_exceeded, cancelled,

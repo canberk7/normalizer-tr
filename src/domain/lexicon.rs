@@ -1,7 +1,13 @@
-use crate::morphology::{Harmony, Word, WordEnd};
+use crate::morphology::{Harmony, Style, Word, WordEnd};
 
 use Harmony::{BackFlat, BackRound, FrontFlat, FrontRound};
 use WordEnd::{Possessive, SoftensP, Voiced, Voiceless, Vowel};
+
+mod abbreviations;
+
+pub(crate) use abbreviations::{
+    Around, abbreviation, abbreviation_around, measure, numbered_place, written,
+};
 
 /// Turkish casing is confined to explicit contextual lookup keys, never source rewriting.
 pub(crate) fn lookup_key(text: &str) -> String {
@@ -19,6 +25,8 @@ pub(crate) struct Lexeme {
     pub(crate) output: &'static str,
     pub(crate) source: Word,
     pub(crate) target: Word,
+    /// Everyday word said instead of `output` in the spoken style, when there is one.
+    spoken: Option<Word>,
 }
 
 impl Lexeme {
@@ -28,6 +36,7 @@ impl Lexeme {
             output,
             source: word,
             target: word,
+            spoken: None,
         }
     }
     const fn distinct(output: &'static str, source: Word, target: Word) -> Self {
@@ -35,6 +44,15 @@ impl Lexeme {
             output,
             source,
             target,
+            spoken: None,
+        }
+    }
+    /// What is said in `style`, with the word its suffixes follow: the formal output, or the
+    /// everyday word where the spoken style has one.
+    pub(crate) fn said(self, style: Style) -> (&'static str, Word) {
+        match (style, self.spoken) {
+            (Style::Spoken, Some(word)) => (word.text, word),
+            _ => (self.output, self.target),
         }
     }
 }
@@ -63,6 +81,16 @@ const UNITS: &[(&str, Lexeme)] = &[
     ("m³", Lexeme::same("metreküp", FrontRound, SoftensP)),
 ];
 
+/// The everyday name of a letter a suffix may be written for instead of its TDK name: `ka`
+/// for `ke` and `ha` for `he`.
+pub(crate) fn everyday_letter(source: Word) -> Option<Word> {
+    match source.text {
+        "ke" => Some(Word::new("ka", BackFlat, Vowel)),
+        "he" => Some(Word::new("ha", BackFlat, Vowel)),
+        _ => None,
+    }
+}
+
 pub(crate) fn unit(symbol: &str) -> Option<Lexeme> {
     UNITS
         .iter()
@@ -85,36 +113,6 @@ pub(crate) fn rate(symbol: &str) -> Option<(Lexeme, Lexeme)> {
     }
 }
 
-pub(crate) fn abbreviation(symbol: &str) -> Option<Lexeme> {
-    Some(match symbol {
-        "Dr." => Lexeme::same("doktor", BackRound, Voiced),
-        "Prof." => Lexeme::same("profesör", FrontRound, Voiced),
-        "vb." => Lexeme::distinct(
-            "ve benzeri",
-            Word::new("be", FrontFlat, Vowel),
-            Word::new("benzeri", FrontFlat, Vowel),
-        ),
-        "TBMM" => Lexeme::distinct(
-            "te be me me",
-            Word::new("me", FrontFlat, Vowel),
-            Word::new("me", FrontFlat, Vowel),
-        ),
-        "PTT" => Lexeme::distinct(
-            "pe te te",
-            Word::new("te", FrontFlat, Vowel),
-            Word::new("te", FrontFlat, Vowel),
-        ),
-        "NATO" => Lexeme::same("nato", BackRound, Vowel),
-        "IBAN" => Lexeme::same("iban", BackFlat, Voiced),
-        "KDV" => Lexeme::distinct(
-            "katma değer vergisi",
-            Word::new("ve", FrontFlat, Vowel),
-            Word::new("vergisi", FrontFlat, Possessive),
-        ),
-        _ => return None,
-    })
-}
-
 #[derive(Clone, Copy, Debug)]
 pub(crate) enum Currency {
     Try,
@@ -135,17 +133,20 @@ impl Currency {
     }
     pub(crate) fn lexeme(self, label: &str) -> Lexeme {
         match self {
-            Self::Try => Lexeme::distinct(
-                "Türk lirası",
-                if label == "TRY" {
-                    Word::new("ye", FrontFlat, Vowel)
-                } else if label == "₺" {
-                    Word::new("lira", BackFlat, Vowel)
-                } else {
-                    Word::new("le", FrontFlat, Vowel)
-                },
-                Word::new("lirası", BackFlat, Possessive),
-            ),
+            Self::Try => Lexeme {
+                spoken: Some(Word::new("lira", BackFlat, Vowel)),
+                ..Lexeme::distinct(
+                    "Türk lirası",
+                    if label == "TRY" {
+                        Word::new("ye", FrontFlat, Vowel)
+                    } else if label == "₺" {
+                        Word::new("lira", BackFlat, Vowel)
+                    } else {
+                        Word::new("le", FrontFlat, Vowel)
+                    },
+                    Word::new("lirası", BackFlat, Possessive),
+                )
+            },
             Self::Usd => Lexeme::distinct(
                 "dolar",
                 if label == "USD" {

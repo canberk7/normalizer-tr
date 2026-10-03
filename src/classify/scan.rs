@@ -75,8 +75,16 @@ fn expression_range(text: &str, offset: usize) -> Option<SourceRange> {
     }
 }
 
+/// Whether a word ends with the period of an abbreviation, also one written with a capital
+/// first as a sentence starts it: `Bkz.` is `bkz.`.
 fn lexical_period(text: &str) -> bool {
-    crate::domain::lexicon::abbreviation(text.split(['\'', '’']).next().unwrap_or(text)).is_some()
+    let base = text.split(['\'', '’']).next().unwrap_or(text);
+    let mut chars = base.chars();
+    let lowered = chars
+        .next()
+        .map(|first| first.to_lowercase().chain(chars).collect::<String>());
+    crate::domain::lexicon::written(base)
+        || lowered.is_some_and(|lowered| crate::domain::lexicon::written(&lowered))
 }
 
 fn numeric_parenthesis_compound(raw: &str) -> bool {

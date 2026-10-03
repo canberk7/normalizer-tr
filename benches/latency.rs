@@ -4,13 +4,15 @@ use std::{collections::BTreeMap, hint::black_box, time::Instant};
 use normalizer_tr::{AmbiguityPolicy, Hint, HintKind, NormalizeOptions, Normalizer, SourceRange};
 use serde_json::{Value, json};
 
-fn options(case: &Value, reject: bool) -> NormalizeOptions {
+const POLICIES: [(AmbiguityPolicy, &str); 3] = [
+    (AmbiguityPolicy::Preserve, "preserve"),
+    (AmbiguityPolicy::Reject, "reject"),
+    (AmbiguityPolicy::Forced, "forced"),
+];
+
+fn options(case: &Value, policy: AmbiguityPolicy) -> NormalizeOptions {
     let mut options = NormalizeOptions {
-        ambiguity_policy: if reject {
-            AmbiguityPolicy::Reject
-        } else {
-            AmbiguityPolicy::Preserve
-        },
+        ambiguity_policy: policy,
         ..Default::default()
     };
     if let Some(hint) = case.get("hint") {
@@ -84,20 +86,16 @@ fn main() {
         let prepared: Vec<_> = selected
             .iter()
             .flat_map(|case| {
-                [false, true].map(|reject| {
+                POLICIES.map(|(policy, name)| {
                     let text = case["text"].as_str().unwrap();
                     assert!(if cohort == "short" {
                         !text.is_empty() && text.len() <= 256
                     } else {
                         (257..=1024).contains(&text.len())
                     });
-                    let options = options(case, reject);
+                    let options = options(case, policy);
                     let expected = outcome(normalizer.normalize(text, &options));
-                    let key = format!(
-                        "{}:{}",
-                        case["id"].as_str().unwrap(),
-                        if reject { "reject" } else { "preserve" }
-                    );
+                    let key = format!("{}:{name}", case["id"].as_str().unwrap());
                     snapshots.insert(key.clone(), expected.clone());
                     distributions.push(
                         json!({"id":key,"bytes":text.len(),"cohort":cohort,"class":case["class"]}),
@@ -107,7 +105,7 @@ fn main() {
                         options,
                         expected,
                         case["class"].as_str().unwrap(),
-                        reject,
+                        name,
                     )
                 })
             })
@@ -120,7 +118,7 @@ fn main() {
         }
         let mut samples = Vec::with_capacity(10000);
         for index in 0..10000 {
-            let (text, options, expected, class, reject) = &prepared[index % prepared.len()];
+            let (text, options, expected, class, policy) = &prepared[index % prepared.len()];
             if index < prepared.len() {
                 assert_eq!(outcome(normalizer.normalize(text, options)), *expected);
             }
@@ -131,10 +129,7 @@ fn main() {
             let elapsed = start.elapsed().as_nanos() as u64;
             samples.push(elapsed);
             classes
-                .entry(format!(
-                    "{cohort}:{class}:{}",
-                    if *reject { "reject" } else { "preserve" }
-                ))
+                .entry(format!("{cohort}:{class}:{policy}"))
                 .or_default()
                 .push(elapsed);
         }
@@ -219,7 +214,7 @@ fn main() {
         "schema_version":1,"normalizer_id":normalizer.normalizer_id(),"package_version":env!("CARGO_PKG_VERSION"),
         "method":{"samples_per_cohort":10000,"warmup_per_cohort":2000,
                   "timing":"Instant per call; validation mapping recognition rendering owned result disposal included",
-                  "order":"deterministic corpus order alternating preserve/reject","outliers":"all retained; no overhead subtraction"},
+                  "order":"deterministic corpus order alternating preserve/reject/forced","outliers":"all retained; no overhead subtraction"},
         "constructor_first_process_init_ns":first_init_ns,
         "constructors":quantiles(&mut constructors),
         "constructor_method":"first process init separately; distribution is subsequent same-process constructor calls, not cold starts",

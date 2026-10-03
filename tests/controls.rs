@@ -10,9 +10,13 @@ use normalizer_tr::{
 };
 
 #[test]
-fn engineering_failures_are_errors_in_both_policies() {
+fn engineering_failures_are_errors_in_every_policy() {
     let normalizer = Normalizer::new().unwrap();
-    for policy in [AmbiguityPolicy::Preserve, AmbiguityPolicy::Reject] {
+    for policy in [
+        AmbiguityPolicy::Preserve,
+        AmbiguityPolicy::Reject,
+        AmbiguityPolicy::Forced,
+    ] {
         let options = NormalizeOptions {
             ambiguity_policy: policy,
             ..Default::default()
@@ -22,22 +26,42 @@ fn engineering_failures_are_errors_in_both_policies() {
             " \n\t\r ",
             "\u{2003}",
             "a\0b",
-            "a\u{202e}b",
-            "a\u{2066}b",
-            "\u{061c}12",
+            "a\u{200f}\0",
+            "\u{200f} \u{202e}",
         ] {
             assert_eq!(
                 normalizer.normalize(input, &options),
                 Err(NormalizeError::InvalidInput)
             );
         }
+        // A bidirectional control is invalid input, except under Forced, which reads the text
+        // as if it were not there and says nothing for it.
         for bidi in [
             '\u{061c}', '\u{200e}', '\u{200f}', '\u{202a}', '\u{202b}', '\u{202c}', '\u{202d}',
             '\u{202e}', '\u{2066}', '\u{2067}', '\u{2068}', '\u{2069}',
         ] {
-            assert_eq!(
-                normalizer.normalize(&format!("a{bidi}12"), &options),
-                Err(NormalizeError::InvalidInput)
+            let result = normalizer.normalize(&format!("a{bidi}12"), &options);
+            if policy != AmbiguityPolicy::Forced {
+                assert_eq!(result, Err(NormalizeError::InvalidInput));
+                continue;
+            }
+            let result = result.unwrap();
+            let unmarked = normalizer.normalize("a12", &options).unwrap();
+            assert_eq!(result.normalized_text(), unmarked.normalized_text());
+            // The control stays inside the original coordinates, read by the span around it.
+            let ends: Vec<_> = result.segments().iter().map(|s| s.range().end()).collect();
+            assert_eq!(ends.last(), Some(&(3 + bidi.len_utf8())), "{bidi:?}");
+            let spaced = normalizer
+                .normalize(&format!("a {bidi} 12"), &options)
+                .unwrap();
+            assert!(
+                spaced.segments().iter().any(|segment| {
+                    segment.range().start() <= 2
+                        && segment.range().end() >= 2 + bidi.len_utf8()
+                        && segment.text().is_empty()
+                        && segment.rule_id() == "forced.spoken"
+                }),
+                "{bidi:?}"
             );
         }
         assert_eq!(
@@ -82,10 +106,15 @@ fn engineering_failures_are_errors_in_both_policies() {
 #[test]
 fn result_allocation_limit_counts_segment_and_final_text_buffers() {
     let normalizer = Normalizer::new().unwrap();
-    // Fewer than 4096 candidates; spoken large integers exceed the result budget.
-    let input = "999999999999999999 ".repeat(1500);
+    // Fewer than 4096 candidates; spoken large quantities exceed the result budget. A bare
+    // digit run this long would be an identifier under Forced, and said digit by digit.
+    let input = "999999999999999999 kg ".repeat(1400);
     assert!(input.len() < MAX_INPUT_BYTES);
-    for policy in [AmbiguityPolicy::Preserve, AmbiguityPolicy::Reject] {
+    for policy in [
+        AmbiguityPolicy::Preserve,
+        AmbiguityPolicy::Reject,
+        AmbiguityPolicy::Forced,
+    ] {
         assert!(matches!(
             normalizer.normalize(
                 &input,

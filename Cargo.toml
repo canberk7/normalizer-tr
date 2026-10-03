@@ -1,6 +1,6 @@
 [package]
 name = "normalizer-tr"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2024"
 rust-version = "1.94"
 description = "Bounded Turkish text-to-speech normalization with original-source diagnostics"

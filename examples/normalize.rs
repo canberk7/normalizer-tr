@@ -115,5 +115,22 @@ fn main() -> Result<(), NormalizeError> {
         println!("result: not returned (strict mode errored)");
         print_issues(issues);
     }
+
+    let forced = normalizer.normalize(
+        partial_input,
+        &NormalizeOptions {
+            ambiguity_policy: AmbiguityPolicy::Forced,
+            ..Default::default()
+        },
+    )?;
+    assert_eq!(
+        forced.normalized_text(),
+        "yirmi beş lira; bin iki yüz otuz dört"
+    );
+    assert!(!forced.complete());
+    assert_eq!(forced.issues(), partial.issues());
+    assert_eq!(forced.segments()[2].kind(), SegmentKind::Cardinal);
+    assert_eq!(forced.segments()[2].rule_id(), "forced.cardinal");
+    print_result("Forced reading", partial_input, &forced);
     Ok(())
 }

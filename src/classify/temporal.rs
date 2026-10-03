@@ -1,7 +1,7 @@
 use crate::{
     IssueCategory,
     model::{Clock, Date, Value},
-    morphology::Inflection,
+    morphology::{Inflection, Style},
     verbalize::{date_spoken, time_spoken},
 };
 
@@ -32,7 +32,7 @@ pub(super) fn time(text: &str, permitted: bool) -> Result<Value, IssueCategory> 
     let (base, suffix) = split_suffix(text).ok_or(IssueCategory::InvalidExpression)?;
     let time = Clock::parse(base).ok_or(IssueCategory::InvalidExpression)?;
     if let Some(suffix) = suffix
-        && time_spoken(time).source_suffix(Inflection::Locative) != suffix
+        && time_spoken(time, Style::Exact).source_suffix(Inflection::Locative) != suffix
     {
         return Err(IssueCategory::InvalidExpression);
     }

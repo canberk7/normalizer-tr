@@ -121,7 +121,7 @@ checksum = "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
 
 [[package]]
 name = "normalizer-tr"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "proptest",
  "regex",
@@ -133,7 +133,7 @@ dependencies = [
 
 [[package]]
 name = "normalizer-tr-python"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "normalizer-tr",
  "pyo3",

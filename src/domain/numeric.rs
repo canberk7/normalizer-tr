@@ -1,7 +1,7 @@
 use super::lexicon::{self, Currency, Lexeme};
 use crate::{
     IssueCategory, SegmentKind,
-    morphology::{Inflection, Spoken, case_inflection, integer_inflection, spoken_case},
+    morphology::{Inflection, Spoken, Style, case_inflection, integer_inflection, spoken_case},
     numerals::{self, Amount, Number},
 };
 
@@ -184,8 +184,8 @@ impl Numeric {
         }
         Some(parsed)
     }
-    pub(crate) fn render(&self) -> Spoken {
-        let mut spoken = numerals::number(&self.number);
+    pub(crate) fn render(&self, style: Style) -> Spoken {
+        let mut spoken = numerals::number_as(&self.number, style);
         if self.ordinal {
             spoken.inflect(Inflection::Ordinal);
         }
@@ -310,22 +310,20 @@ impl Quantity {
             case,
         })
     }
-    pub(crate) fn render(&self) -> Spoken {
+    pub(crate) fn render(&self, style: Style) -> Spoken {
+        let (output, target) = self.lexeme.said(style);
         let mut spoken = match &self.value {
             QuantityValue::Number(number) => {
                 let text = format!(
                     "{} {}",
-                    numerals::number(number).into_text(),
-                    self.lexeme.output
+                    numerals::number_as(number, style).into_text(),
+                    output
                 );
-                Spoken::lexical(&text, self.lexeme.target)
+                Spoken::lexical(&text, target)
             }
-            QuantityValue::Money(amount, currency) => numerals::amount(
-                amount,
-                self.lexeme.output,
-                self.lexeme.target,
-                currency.minor().target,
-            ),
+            QuantityValue::Money(amount, currency) => {
+                numerals::amount(amount, output, target, currency.minor().target)
+            }
         };
         if let Some(prefix) = self.prefix {
             let mut denominator = Spoken::lexical(prefix.output, prefix.target);
@@ -373,11 +371,23 @@ pub(crate) fn unsupported_label(text: &str) -> bool {
     )
 }
 
+/// An abbreviation or currency code with at most one case suffix, where the words around it
+/// let it be read. Right after an ordinal number an abbreviation is said without the
+/// possessive a name would give it.
 pub(crate) fn lexical_reading(
     text: &str,
+    around: lexicon::Around<'_>,
 ) -> Option<Result<(Lexeme, Option<Inflection>), IssueCategory>> {
     let base = text.split(['\'', '’']).next().unwrap_or(text);
-    let entry = lexicon::abbreviation(base)
+    // `No` with a suffix is the abbreviation without its period: `5 No'lu` is beş numaralı.
+    let dotted;
+    let base = if matches!(base, "No" | "NO") && base.len() < text.len() {
+        dotted = format!("{base}.");
+        dotted.as_str()
+    } else {
+        base
+    };
+    let entry = lexicon::abbreviation_around(base, around)
         .or_else(|| Currency::parse(base).map(|currency| currency.lexeme(base)))?;
     let Some((_, suffixes)) = suffix_parts(text) else {
         return Some(Err(IssueCategory::Unsupported));
@@ -385,8 +395,12 @@ pub(crate) fn lexical_reading(
     if suffixes.len() > 1 {
         return Some(Err(IssueCategory::Unsupported));
     }
+    // A writer may suffix `K` and `H` as said every day, ka and ha: `TCK'nın`, `SGK'ya`.
+    let everyday = lexicon::everyday_letter(entry.source);
     let case = match suffixes.first() {
-        Some(suffix) => match case_inflection(entry.source, suffix) {
+        Some(suffix) => match case_inflection(entry.source, suffix)
+            .or_else(|| everyday.and_then(|source| case_inflection(source, suffix)))
+        {
             Some(case) => Some(case),
             None => return Some(Err(IssueCategory::InvalidExpression)),
         },
@@ -463,11 +477,17 @@ impl NumericRange {
             noun,
         })
     }
-    pub(crate) fn render(&self) -> String {
+    /// Both ends with `ila` between them; the spoken style says the dash, tire, which is
+    /// right for a score too.
+    pub(crate) fn render(&self, style: Style) -> String {
+        let joiner = match style {
+            Style::Exact => "ila",
+            Style::Spoken => "tire",
+        };
         let mut result = format!(
-            "{} ila {}",
-            numerals::number(&self.start).into_text(),
-            numerals::number(&self.end).into_text()
+            "{} {joiner} {}",
+            numerals::number_as(&self.start, style).into_text(),
+            numerals::number_as(&self.end, style).into_text()
         );
         if let Some(unit) = self.context {
             result.push(' ');

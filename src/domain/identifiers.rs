@@ -106,6 +106,25 @@ pub(crate) struct Iban {
 
 impl Iban {
     pub(crate) fn parse(text: &str) -> Option<Self> {
+        let iban = Self::shaped(text)?;
+        let canonical = &iban.canonical;
+        let check = (canonical.as_bytes()[2] - b'0') * 10 + canonical.as_bytes()[3] - b'0';
+        if !(2..=98).contains(&check) {
+            return None;
+        }
+        let mut remainder = 0_u32;
+        for byte in canonical.as_bytes()[4..]
+            .iter()
+            .copied()
+            .chain("2927".bytes())
+            .chain(canonical.as_bytes()[2..4].iter().copied())
+        {
+            remainder = (remainder * 10 + u32::from(byte - b'0')) % 97;
+        }
+        (remainder == 1).then_some(iban)
+    }
+    /// A Turkish IBAN by its written shape alone; the check digits are not verified.
+    pub(crate) fn shaped(text: &str) -> Option<Self> {
         let groups: Vec<_> = text.split(' ').collect();
         if groups.iter().any(|g| g.is_empty()) {
             return None;
@@ -124,20 +143,7 @@ impl Iban {
         {
             return None;
         }
-        let check = (canonical.as_bytes()[2] - b'0') * 10 + canonical.as_bytes()[3] - b'0';
-        if !(2..=98).contains(&check) {
-            return None;
-        }
-        let mut remainder = 0_u32;
-        for byte in canonical.as_bytes()[4..]
-            .iter()
-            .copied()
-            .chain("2927".bytes())
-            .chain(canonical.as_bytes()[2..4].iter().copied())
-        {
-            remainder = (remainder * 10 + u32::from(byte - b'0')) % 97;
-        }
-        (remainder == 1).then_some(Self { canonical })
+        Some(Self { canonical })
     }
     pub(crate) fn render(&self) -> String {
         let mut output = String::from("te re ");

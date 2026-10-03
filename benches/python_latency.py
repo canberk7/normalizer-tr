@@ -56,7 +56,7 @@ def measure(corpus):
         for case in corpus:
             if case["cohort"] != cohort:
                 continue
-            for policy in ("preserve", "reject"):
+            for policy in ("preserve", "reject", "forced"):
                 options = {"ambiguity_policy": policy}
                 if "hint" in case:
                     h = case["hint"]
@@ -128,7 +128,7 @@ def main():
         "corpus_sha256": {
             file.name: hashlib.sha256(file.read_bytes()).hexdigest() for file in files
         },
-        "method": "10000 public calls/cohort after2000warmup; argument validation native Rust marshal/disposal included; deterministic preserve/reject; no outlier removal/overhead subtraction",
+        "method": "10000 public calls/cohort after2000warmup; argument validation native Rust marshal/disposal included; deterministic preserve/reject/forced; no outlier removal/overhead subtraction",
         "clock_overhead": quantiles(clock),
         "measurement": measure(corpus),
         "allocation_instrumentation": "unavailable for Rust native allocations; no inferred counts or peak-memory claim",

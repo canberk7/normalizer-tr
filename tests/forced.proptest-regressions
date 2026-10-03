@@ -1,0 +1,14 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc 3d7cf7a10bf5ffcdeb88f73860d547207e6729c7d2dd9d9681712e59851c79c8 # shrinks to fragments = ["#yapay_zeka"]
+cc d380303b8332bf80c7b615a9e248f6c6e7fca906903a931d162af775eae3c1be # shrinks to parts = ["'", ",", "0", "\"", "A"]
+cc 2320f7d917a0ba22f7c52d763b4fe46615fdad0008610ae43d87efed697a13ff # shrinks to fragments = ["4,25 TL'lik"]
+cc 5b5cdb71f99cdc9cd9a279d47cfd5268799d4412394d824d9403d9f2313fde03 # shrinks to parts = ["0", "X"]
+cc f28507fd8f1e9137b6c085c79818b6f05ee5532dfed81b87a6065e24d30b5a35 # shrinks to parts = ["0", "-", "x", " ", "0"]
+cc b2f2430f857bcfdeb91b0ed272ce17a0f0478bfb2600f61ad347d9ddb70e2f8f # shrinks to parts = ["' ", "\u{61c}"]
+cc d96f4135cb86b7812a17595efe9d6a4430b86c2a2c1f2c0f617c22a82c763940 # shrinks to parts = ["X", "D"]
+cc a7873b8c6dd102b89d5234f30b04612e3cfaa4409794fe2bb7b4d993a1ab1160 # shrinks to fragments = ["①", ""]

@@ -1,4 +1,4 @@
-use crate::numerals;
+use crate::{morphology::Style, numerals};
 
 #[derive(Clone, Debug)]
 pub(crate) struct Electronic {
@@ -203,8 +203,19 @@ impl Electronic {
         }
         Some(Self { spoken })
     }
-    pub(crate) fn render(&self) -> &str {
-        &self.spoken
+    /// The address as it is said; the spoken style names `/` slaş, as people say it, the
+    /// letters of `http` and `https` by their TDK names, and `com` kom also before another
+    /// label (`.com.tr`).
+    pub(crate) fn render(&self, style: Style) -> String {
+        match style {
+            Style::Exact => self.spoken.clone(),
+            Style::Spoken => self
+                .spoken
+                .replace("eğik çizgi", "slaş")
+                .replacen("ha te te pe es ", "he te te pe se ", 1)
+                .replacen("ha te te pe ", "he te te pe ", 1)
+                .replace(" nokta com nokta ", " nokta kom nokta "),
+        }
     }
 }
 
@@ -228,6 +239,53 @@ fn domain_words(domain: &str) -> String {
 
 pub(crate) fn looks_like(text: &str) -> bool {
     text.contains('@') || text.contains("://") || text.starts_with("www.")
+}
+
+/// A hashtag as everyday speech says it: heşteg, then its words, split where a lowercase
+/// letter meets a capital or a letter meets a digit, with numbers said as numbers:
+/// `#2026hedefleri` is heşteg iki bin yirmi altı hedefleri. A single digit is a rank: `#1` is
+/// bir numara.
+pub(crate) fn spoken_hashtag(body: &str) -> String {
+    if let Ok(rank) = body.parse::<u64>()
+        && body.len() == 1
+    {
+        return format!("{} numara", numerals::cardinal(rank).into_text());
+    }
+    let mut words: Vec<String> = Vec::new();
+    let mut word = String::new();
+    let mut previous: Option<char> = None;
+    for ch in body.chars() {
+        let boundary = previous.is_some_and(|previous| {
+            ch == '_'
+                || previous == '_'
+                || (previous.is_lowercase() && ch.is_uppercase())
+                || previous.is_ascii_digit() != ch.is_ascii_digit()
+        });
+        if boundary && !word.is_empty() {
+            words.push(std::mem::take(&mut word));
+        }
+        if ch != '_' {
+            word.push(ch);
+        }
+        previous = Some(ch);
+    }
+    if !word.is_empty() {
+        words.push(word);
+    }
+    let said: Vec<String> = words
+        .into_iter()
+        .map(|word| {
+            let number = word.bytes().all(|b| b.is_ascii_digit())
+                && !(word.len() > 1 && word.starts_with('0'))
+                && word.len() < 7;
+            match word.parse::<u64>() {
+                Ok(value) if number => numerals::cardinal(value).into_text(),
+                _ if word.bytes().all(|b| b.is_ascii_digit()) => numerals::digits(&word),
+                _ => word,
+            }
+        })
+        .collect();
+    format!("heşteg {}", said.join(" "))
 }
 
 pub(crate) fn hashtag(text: &str) -> Option<String> {

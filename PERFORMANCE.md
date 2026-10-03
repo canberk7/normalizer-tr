@@ -38,8 +38,8 @@ cargo bench --locked --features serde --bench latency -- --output <new-absolute-
 ## Native methodology
 
 - `Instant` measures 10,000 individual calls per cohort after 2,000 warmup calls.
-- A deterministic mix interleaves Preserve/Reject policy cases; outcomes are
-  checked before and after sampling.
+- A deterministic mix interleaves Preserve/Reject/Forced policy cases; outcomes
+  are checked before and after sampling.
 - Timings include owned result/error disposal, not just recognition.
 - Nearest-rank p50/p95/p99/max and per-class/policy counts are reported.
 - Every outlier is retained. Clock overhead is reported, not subtracted.

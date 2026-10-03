@@ -33,6 +33,7 @@ HintKind = Literal[
     "range",
     "telephone",
     "electronic",
+    "literal",
 ]
 
 
@@ -62,6 +63,7 @@ class Hint:
             "range",
             "telephone",
             "electronic",
+            "literal",
         ):
             raise ValueError("unsupported hint kind")
 
@@ -156,8 +158,8 @@ class Normalizer:
             raise NormalizationError(
                 "invalid_input", "input contains invalid Unicode"
             ) from None
-        if ambiguity_policy not in ("preserve", "reject"):
-            raise ValueError("ambiguity_policy must be preserve or reject")
+        if ambiguity_policy not in ("preserve", "reject", "forced"):
+            raise ValueError("ambiguity_policy must be preserve, reject or forced")
         if not isinstance(hints, Sequence):
             raise TypeError("hints must be a sequence of Hint")
         if any(not isinstance(hint, Hint) for hint in hints):

@@ -1,10 +1,12 @@
 use crate::{
+    SegmentKind,
     domain::{
         electronic::Electronic,
         identifiers::{Iban, Telephone},
+        literal::Literal,
         numeric::{Numeric, NumericRange, Quantity},
     },
-    morphology::Inflection,
+    morphology::{Inflection, Suffix},
     numerals::Number,
 };
 
@@ -18,6 +20,21 @@ pub(crate) struct Date {
 
 impl Date {
     pub(crate) fn parse(text: &str) -> Option<Self> {
+        let date = Self::shaped(text)?;
+        let year = date.year;
+        let leap =
+            year.is_multiple_of(4) && (!year.is_multiple_of(100) || year.is_multiple_of(400));
+        let days = match date.month {
+            2 if leap => 29,
+            2 => 28,
+            4 | 6 | 9 | 11 => 30,
+            _ => 31,
+        };
+        (date.day <= days).then_some(date)
+    }
+    /// A day, month and year by the written shape alone: day 1-31, month 1-12 and a nonzero
+    /// four-digit year. The calendar is not checked, so `29.02.1900` has this shape.
+    pub(crate) fn shaped(text: &str) -> Option<Self> {
         let dotted = text.contains('.');
         let parts: Vec<_> = text.split(if dotted { '.' } else { '-' }).collect();
         let [first, second, third] = parts.as_slice() else {
@@ -41,16 +58,7 @@ impl Date {
         let day: u8 = day.parse().ok()?;
         let month: u8 = month.parse().ok()?;
         let year: u16 = year.parse().ok()?;
-        let leap =
-            year.is_multiple_of(4) && (!year.is_multiple_of(100) || year.is_multiple_of(400));
-        let days = match month {
-            2 if leap => 29,
-            2 => 28,
-            4 | 6 | 9 | 11 => 30,
-            1 | 3 | 5 | 7 | 8 | 10 | 12 => 31,
-            _ => return None,
-        };
-        if year == 0 || day == 0 || day > days {
+        if year == 0 || !(1..=31).contains(&day) || !(1..=12).contains(&month) {
             return None;
         }
         Some(Self {
@@ -98,6 +106,13 @@ impl Clock {
         }
         Some(Self { hour, minute })
     }
+    /// `24:00`, written for the end of a day. Only a forced reading accepts it.
+    pub(crate) fn end_of_day() -> Self {
+        Self {
+            hour: 24,
+            minute: 0,
+        }
+    }
     pub(crate) fn hour(self) -> u8 {
         self.hour
     }
@@ -121,6 +136,19 @@ pub(crate) enum Value {
     Roman(Numeric),
     Electronic(Electronic),
     Symbol(String),
+    Literal(Literal),
+    /// A forced reading with the apostrophe suffix that was split off its span.
+    Suffixed(Box<Value>, Suffix),
+    /// Two forced readings said one after the other with a joining word between them.
+    Joined(SegmentKind, Box<Value>, &'static str, Box<Value>),
+    /// Literal reading of a token that is no issue: a named symbol or spelled letters.
+    Stray(Literal),
+    /// A forced reading with the brackets, quotes or commas written around its span.
+    Framed(String, Box<Value>, String),
+    /// A clock with seconds: `3:45:30`.
+    Seconds(Clock, u8),
+    /// A prose hashtag: the letters and digits after `#`.
+    Hashtag(String),
 }
 
 #[cfg(test)]
@@ -146,6 +174,21 @@ mod tests {
             "2026-03-4",
         ] {
             assert!(Date::parse(input).is_none());
+        }
+        // The shape alone admits a day the calendar does not have, and nothing else.
+        for input in ["31.04.2026", "29.02.1900", "31.02.2026", "2026-02-30"] {
+            assert!(Date::shaped(input).is_some(), "{input}");
+        }
+        for input in [
+            "32.01.2026",
+            "00.01.2026",
+            "01.13.2026",
+            "01.00.2026",
+            "01.01.0000",
+            "2026-3-04",
+            "1.234.567",
+        ] {
+            assert!(Date::shaped(input).is_none(), "{input}");
         }
     }
 

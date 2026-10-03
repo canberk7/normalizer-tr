@@ -1,5 +1,6 @@
 mod boundaries;
 mod context;
+pub(crate) mod forced;
 mod readers;
 mod scan;
 mod temporal;
@@ -31,11 +32,14 @@ fn push(
     Ok(())
 }
 
+/// With `strays`, a token no reader claims is also a candidate when the Forced policy speaks
+/// it: a named symbol or spelled letters. Such a candidate is resolved, never an issue.
 pub(crate) fn collect(
     source: &SourceMap,
     hints: &[Hint],
     resources: &Resources,
     control: &WorkControl,
+    strays: bool,
 ) -> Result<Vec<Candidate>, NormalizeError> {
     let text = source.text();
     let tokens = scan::tokens(source, resources, control)?;
@@ -86,6 +90,11 @@ pub(crate) fn collect(
             index = claim.next;
             push(&mut candidates, claim, reading)?;
         } else {
+            let before = &text[..tokens[index].range.start];
+            let following = &text[tokens[index].range.end..];
+            if strays && let Some(value) = forced::stray(tokens[index].text, before, following) {
+                push(&mut candidates, bounds.claim(index, index)?, Ok(value))?;
+            }
             index += 1;
         }
     }

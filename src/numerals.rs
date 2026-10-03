@@ -1,4 +1,4 @@
-use crate::morphology::{Spoken, Word};
+use crate::morphology::{Spoken, Style, Word};
 
 pub(crate) const MAGNITUDE_LIMIT: u64 = 1_000_000_000_000_000_000;
 
@@ -220,15 +220,35 @@ pub(crate) fn sign_text(sign: Sign) -> &'static str {
 }
 
 pub(crate) fn number(number: &Number) -> Spoken {
+    number_as(number, Style::Exact)
+}
+
+/// Exact style reads a fraction digit by digit: `4,25` is dört virgül iki beş. Spoken style
+/// reads it as a number after its leading zeros: dört virgül yirmi beş. More than three digits
+/// after the zeros are read one by one in both.
+pub(crate) fn number_as(number: &Number, style: Style) -> Spoken {
     let mut spoken = cardinal(number.integer);
     spoken.prefix(sign_text(number.sign));
-    if !number.fraction.is_empty() {
-        spoken.append_literal(" virgül");
-        for digit in number.fraction.bytes() {
-            spoken.append_word(DIGITS[usize::from(digit - b'0')]);
-        }
+    if number.fraction.is_empty() {
+        return spoken;
     }
-    spoken
+    spoken.append_literal(" virgül");
+    let zeros = number.fraction.bytes().take_while(|b| *b == b'0').count();
+    let (padding, rest) = number.fraction.split_at(zeros);
+    let as_number = style == Style::Spoken && (1..=3).contains(&rest.len());
+    let one_by_one = if as_number { padding } else { &number.fraction };
+    for digit in one_by_one.bytes() {
+        spoken.append_word(DIGITS[usize::from(digit - b'0')]);
+    }
+    if !as_number {
+        return spoken;
+    }
+    let value = rest
+        .bytes()
+        .fold(0, |value, digit| value * 10 + u64::from(digit - b'0'));
+    let mut tail = cardinal(value);
+    tail.prefix(&format!("{} ", spoken.into_text()));
+    tail
 }
 
 pub(crate) fn digits(text: &str) -> String {
@@ -271,6 +291,44 @@ mod tests {
             Number::parse("999999999999999999").unwrap().integer(),
             MAGNITUDE_LIMIT - 1
         );
+    }
+
+    #[test]
+    fn a_fraction_is_read_digit_by_digit_or_as_a_number() {
+        for (written, exact, spoken) in [
+            ("4,25", "dört virgül iki beş", "dört virgül yirmi beş"),
+            (
+                "12,05",
+                "on iki virgül sıfır beş",
+                "on iki virgül sıfır beş",
+            ),
+            ("0,18", "sıfır virgül bir sekiz", "sıfır virgül on sekiz"),
+            ("2,50", "iki virgül beş sıfır", "iki virgül elli"),
+            (
+                "1,250",
+                "bir virgül iki beş sıfır",
+                "bir virgül iki yüz elli",
+            ),
+            (
+                "0,0025",
+                "sıfır virgül sıfır sıfır iki beş",
+                "sıfır virgül sıfır sıfır yirmi beş",
+            ),
+            ("3,00", "üç virgül sıfır sıfır", "üç virgül sıfır sıfır"),
+            // Longer than anyone says as one number: still one by one.
+            (
+                "3,1415",
+                "üç virgül bir dört bir beş",
+                "üç virgül bir dört bir beş",
+            ),
+            ("-0,5", "eksi sıfır virgül beş", "eksi sıfır virgül beş"),
+            ("7", "yedi", "yedi"),
+        ] {
+            let parsed = Number::parse(written).unwrap();
+            assert_eq!(number_as(&parsed, Style::Exact).into_text(), exact);
+            assert_eq!(number(&parsed).into_text(), exact);
+            assert_eq!(number_as(&parsed, Style::Spoken).into_text(), spoken);
+        }
     }
 
     #[test]

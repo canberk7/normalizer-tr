@@ -85,6 +85,7 @@ fn segment_kind(kind: SegmentKind) -> &'static str {
         SegmentKind::Roman => "roman",
         SegmentKind::Electronic => "electronic",
         SegmentKind::Symbol => "symbol",
+        SegmentKind::Literal => "literal",
     }
 }
 
@@ -175,6 +176,7 @@ impl NativeNormalizer {
         let policy = match policy {
             "preserve" => AmbiguityPolicy::Preserve,
             "reject" => AmbiguityPolicy::Reject,
+            "forced" => AmbiguityPolicy::Forced,
             _ => {
                 return Err(pyo3::exceptions::PyValueError::new_err(
                     "invalid ambiguity policy",
@@ -194,6 +196,7 @@ impl NativeNormalizer {
                     "range" => HintKind::Range,
                     "telephone" => HintKind::Telephone,
                     "electronic" => HintKind::Electronic,
+                    "literal" => HintKind::Literal,
                     _ => return Err(pyo3::exceptions::PyValueError::new_err("invalid hint kind")),
                 };
                 Ok(Hint::new(SourceRange::new(start, end), kind))
